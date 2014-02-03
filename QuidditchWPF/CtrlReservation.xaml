@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="QuidditchWPF.CtrlReservation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Name="labelCoupe" Content="Coupe :" Grid.Row="0" Grid.Column="0"/>
+        <ComboBox Name="comboCoupes" Grid.Row="0" Grid.Column="1" SelectionChanged="comboCoupes_SelectionChanged"/>
+        <Label Name="labelMatch" Content="Match :" Grid.Row="1" Grid.Column="0"/>
+        <ComboBox Name="comboMatchs" SelectedItem="{Binding Match}" Grid.Row="1" Grid.Column="1"/>
+        <Label Name="labelNom" Content="Nom :" Grid.Row="2" Grid.Column="0"/>
+        <TextBox Name="inputNom" Text="{Binding Nom}" Grid.Row="2" Grid.Column="1"/>
+        <Label Name="labelPrenom" Content="Prénom :" Grid.Row="3" Grid.Column="0" />
+        <TextBox Name="inputPrenom" Text="{Binding Prenom}" Grid.Row="3" Grid.Column="1"/>
+        <Label Name="labelAdresse" Content="Adresse :" Grid.Row="4" Grid.Column="0"/>
+        <TextBox Name="inputAdresse" Text="{Binding Adresse}" Grid.Row="4" Grid.Column="1"/>
+        <Label Name="labelPlaces" Content="Places :" Grid.Row="5" Grid.Column="0"/>
+        <TextBox Name="inputNPR" Text="{Binding NbPlaces}" Grid.Row="5" Grid.Column="1"/>
+        <Label Name="prixUnite" Grid.Row="6" Grid.Column="0" Content="Prix du billet :"/>
+        <Label Name="affichagePrixUnite" Grid.Row="6" Grid.Column="1" Content="{Binding PrixUnite}"/>
+        <Label Name="labelPrix" Content="Prix :" Grid.Row="7" Grid.Column="0"/>
+        <Label Name="affichagePrix" Grid.Row="7" Grid.Column="1" Content="{Binding Prix}"/>
+    </Grid>
+</UserControl>

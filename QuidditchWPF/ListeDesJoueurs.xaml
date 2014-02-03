@@ -1,0 +1,55 @@
+﻿<Window x:Class="QuidditchWPF.ListeDesJoueurs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gestion des Joueurs" MinHeight="250" MinWidth="850"
+        Height="500" Width="800" WindowStartupLocation="CenterScreen">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Vertical" MinWidth="300">
+            <ComboBox Name="comboBoxEquipes" SelectionChanged="onComboBoxSelectionChanged">
+            </ComboBox>
+            <ListView Name="listviewEquipe" ItemsSource="{Binding }" SelectionChanged="onListViewSelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Path=Nom}"/>
+                        <GridViewColumn Header="Poste" DisplayMemberBinding="{Binding Path=Poste}"/>
+                        <GridViewColumn Header="Score" DisplayMemberBinding="{Binding Path=Score}"/>
+                        <GridViewColumn Header="Sélection" DisplayMemberBinding="{Binding Path=NbSelection}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" MinWidth="500">
+            <Label TextElement.FontSize="32" Content="Fiche du joueur" HorizontalAlignment="Center"/>
+            <Grid Name="Grid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Content="Nom du joueur :" Grid.Column="0" Grid.Row="0"/>
+                <TextBox Name="inputNom" Width="410" Text="{Binding Nom}" Grid.Column="1" Grid.Row="0"/>
+                <Label Content="Prénom :" Grid.Column="0" Grid.Row="1"/>
+                <TextBox Name="inputPrenom" Width="410" Text="{Binding Prenom}" Grid.Column="1" Grid.Row="1"/>
+                <Label Content="Score :" Grid.Column="0" Grid.Row="2"/>
+                <TextBox Name="inputScore" Width="410" Text="{Binding Score}" Grid.Column="1" Grid.Row="2"/>
+                <Label Content="Poste :" Grid.Column="0" Grid.Row="3"/>
+                <ComboBox Name="inputPoste" Width="410" Text="{Binding Poste}" Grid.Column="1" Grid.Row="3"/>
+                <Label Content="Sélections :" Grid.Column="0" Grid.Row="4"/>
+                <TextBox Name="inputSelections" Width="410" Text="{Binding NbSelection}" Grid.Column="1" Grid.Row="4"/>
+            </Grid>
+            <DockPanel DockPanel.Dock="Bottom">
+                <Button Name="Ajouter" Content="Ajouter"  DockPanel.Dock="Right"/>
+                <Button Name="Modifier" Content="Modifier"  DockPanel.Dock="Right"/>
+                <Button Name="Supprimer" Content="Supprimer"  DockPanel.Dock="Right" />
+                <Label></Label>
+            </DockPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="QuidditchWPF.GestionReservation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:QuidditchWPF"
+        Title="Gestion des Réservations"
+        MinHeight="340" MinWidth="580"
+        Height="340" Width="580"
+        WindowStartupLocation="CenterScreen">
+    <StackPanel Orientation="Horizontal">
+        <ListView Name="listViewReservations"  ItemsSource="{Binding}" MinWidth="100" SelectionChanged="onClickListview">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Path=Nom}"/>
+                    <GridViewColumn Header="Match" DisplayMemberBinding="{Binding Path=Match.Id}"/>
+                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Path=Match.Date}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Orientation="Vertical" MinWidth="296">
+            <Label TextElement.FontSize="24" Content="Fiche de réservation" HorizontalAlignment="Center"/>
+            <controls:CtrlReservation x:Name="userCtrl"/>
+            <StackPanel Name="buttons" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="Supprimer" Content="Supprimer" Command="{Binding suppCommande}"/>
+                <Button Name="Modifier" Content="Modifier" Command="{Binding modifCommande}"/>
+                <Button Name="Ajouter" Content="Ajouter" Command="{Binding ajoutCommande}"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,35 @@
+﻿<Window x:Class="QuidditchWPF.ListeDesEquipes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gestion des Equipes" MinHeight="200" MinWidth="400"
+        Height="400" Width="400"
+        WindowStartupLocation="CenterScreen">
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <DockPanel DockPanel.Dock="Top">
+                <Label Name="NomEquipe" Content="Nom de l'équipe :" DockPanel.Dock="Left"/>
+                <TextBox Name="inputNomEquipe" Text="{Binding Nom}" DockPanel.Dock="Right"/>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <Label Name="Pays" Content="Pays :                    " DockPanel.Dock="Left"/>
+                <TextBox Name="inputLibelle" Text="{Binding Pays}" DockPanel.Dock="Right" />
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Bottom">
+                <Button Name="Ajouter" Content="Ajouter"  DockPanel.Dock="Right"/>
+                <Button Name="Modifier" Content="Modifier"  DockPanel.Dock="Right"/>
+                <Button Name="Supprimer" Content="Supprimer"  DockPanel.Dock="Right" />
+                <Label></Label>
+            </DockPanel>
+         </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom">
+            <ListView Name="ListViewEquipes" ItemsSource="{Binding}" SelectionChanged="onClickListView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Path=Nom}" />
+                        <GridViewColumn Header="Pays" DisplayMemberBinding="{Binding Path=Pays}"/>
+                    </GridView>
+                </ListView.View>                
+            </ListView>
+        </DockPanel>
+    </DockPanel>
+</Window>

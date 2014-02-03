@@ -1,0 +1,28 @@
+﻿<Window x:Class="QuidditchWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Quidditch Manager" Height="350" Width="525"
+        MinHeight="300" MinWidth="300" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="resources/background.jpg"></ImageBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button Content="Gestion des coupes" HorizontalAlignment="Center" VerticalAlignment="Center" Width="127" Grid.Column="0" Grid.Row="0" Height="50" Click="onClickCoupesButton"/>
+        <Button Content="Gestion des équipes" HorizontalAlignment="Center" VerticalAlignment="Center" Width="137" Grid.Column="1" Grid.Row="0" Height="50" Click="onClickEquipesButton"/>
+        <Button Content="Gestion des joueurs" HorizontalAlignment="Center" VerticalAlignment="Center" Width="127" Grid.Column="0" Grid.Row="1" Height="50" Click="onClickJoueursButton"/>
+        <Button Content="Gestion des stades" HorizontalAlignment="Center" VerticalAlignment="Center" Width="137" Grid.Column="1" Grid.Row="1" Height="50" Click="onClickStadesButton"/>
+        <Button Content="Gestion des matchs" HorizontalAlignment="Center" VerticalAlignment="Center" Width="127" Grid.Column="0" Grid.Row="2" Height="50" Click="onClickMatchsButton"/>
+        <Button Content="Gestion des réservations" HorizontalAlignment="Center" VerticalAlignment="Center" Width="137" Grid.Column="1" Grid.Row="2" Height="50" Click="onClickReservationButton"/>
+
+    </Grid>
+
+</Window>
