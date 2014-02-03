@@ -13,7 +13,7 @@ namespace QuidditchWPF
 {
     public class GestionReservationViewModel
     {
-        private int nextId;
+        public int nextId;
 
         private ReservationViewModel _selectedReservation;
         public ReservationViewModel SelectedReservation
