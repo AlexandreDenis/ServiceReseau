@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesLayer", "EntitiesLa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuidditchWPF", "QuidditchWPF\QuidditchWPF.csproj", "{ADDF4BD6-50D1-4ABD-860C-8006FDC5968E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{2D31D593-E852-4A22-9193-2456B0C0B3C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{ADDF4BD6-50D1-4ABD-860C-8006FDC5968E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADDF4BD6-50D1-4ABD-860C-8006FDC5968E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADDF4BD6-50D1-4ABD-860C-8006FDC5968E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D31D593-E852-4A22-9193-2456B0C0B3C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D31D593-E852-4A22-9193-2456B0C0B3C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D31D593-E852-4A22-9193-2456B0C0B3C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D31D593-E852-4A22-9193-2456B0C0B3C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
