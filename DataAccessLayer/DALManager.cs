@@ -53,42 +53,42 @@ namespace DataAccessLayer
 
         public List<Joueur> GetAllJoueurs()
         {
-            return null;
+            return DataAccessLayer.GetAllJoueurs();
         }
 
         public List<Equipe> GetAllEquipes()
         {
-            return null;
+            return DataAccessLayer.GetAllEquipes();
         }
 
         public List<Stade> GetAllStades()
         {
-            return null;
+            return DataAccessLayer.GetAllStades();
         }
 
         public List<Match> GetAllMatchs()
         {
-            return null;
+            return DataAccessLayer.GetAllMatchs();
         }
 
         public List<Utilisateur> GetAllUtilisateurs()
         {
-            return null;
+            return DataAccessLayer.;
         }
 
         public List<Reservation> GetAllReservations()
         {
-            return null;
+            return DataAccessLayer.GetAllReservations();
         }
 
         public Utilisateur GetUtilsateurByLogin(string inLogin)
         {
-            return null;
+            return DataAccessLayer.GetUtilsateurByLogin(inLogin);
         }
 
         public Coupe GetCoupeById(int inId)
         {
-            return null;
+            return DataAccessLayer.GetCoupeById(inId);
         }
     }
 }

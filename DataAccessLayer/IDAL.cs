@@ -16,6 +16,8 @@ namespace DataAccessLayer
         List<Match> GetAllMatchs();
         List<Utilisateur> GetAllUtilisateurs();
         List<Reservation> GetAllReservations();
+        Coupe GetCoupeById(int inId);
+        Utilisateur GetUtilsateurByLogin(string inLogin)
 
        /* void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade);
         void SupprimerMatch(int inId);
