@@ -7,18 +7,18 @@ using EntitiesLayer;
 
 namespace DataAccessLayer
 {
-    public interface IDAL
+    public interface IDal
     {
-        IList<Joueur> GetAllJoueurs();
-        IList<Equipe> GetAllEquipes();
-        IList<Stade> GetAllStades();
-        IList<Match> GetAllMatchs();
-        IList<Coupe> GetAllCoupes();
-        IList<Utilisateur> GetAllUtilisateurs();
-        IList<Reservation> GetAllReservations();
+        List<Coupe> GetAllCoupes();
+        List<Joueur> GetAllJoueurs();
+        List<Equipe> GetAllEquipes();
+        List<Stade> GetAllStades();
+        List<Match> GetAllMatchs();
+        List<Utilisateur> GetAllUtilisateurs();
+        List<Reservation> GetAllReservations();
 
-        void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade);
+       /* void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade);
         void SupprimerMatch(int inId);
-        void UpdateMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade);
+        void UpdateMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade);*/
     }
 }

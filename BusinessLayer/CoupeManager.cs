@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntitiesLayer;
-using StubDataAccessLayer;
+using DataAccessLayer;
 
 namespace BusinessLayer
 {
@@ -14,7 +14,7 @@ namespace BusinessLayer
 
         public CoupeManager()
         {
-            _manager = new DalManager();
+            _manager = DalManager.GetInstance(DALProvider.SQLSERVER);
         }
 
         /*renvoie toutes les coupes*/

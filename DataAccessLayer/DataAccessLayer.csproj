@@ -40,9 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="DALManager.cs" />
-    <Compile Include="DALSqlServer.cs" />
-    <Compile Include="IDAL.cs" />
+    <Compile Include="DalManager.cs" />
+    <Compile Include="DalSqlServer.cs" />
+    <Compile Include="IDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
