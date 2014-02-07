@@ -353,5 +353,75 @@ namespace DataAccessLayer
         {
             return null;
         }
+
+        public void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        {
+            StringBuilder request = new StringBuilder();
+            request.Append("insert into Matches values(");
+            request.Append(inId);
+            request.Append(",");
+            request.Append(inCoupeID);
+            request.Append(",");
+            request.Append(inStade.Id);
+            request.Append(",");
+            request.Append(inDom.Id);
+            request.Append(",");
+            request.Append(inVisiteur.Id);
+            request.Append(",");
+            request.Append(inSED);
+            request.Append(",");
+            request.Append(inSEV);
+            request.Append(");");
+
+            SqlCommand commandeInsert = new SqlCommand(request.ToString());
+            commandeInsert.ExecuteNonQuery();
+        }
+
+        public void SupprimerMatch(int inId)
+        {
+            StringBuilder request = new StringBuilder();
+
+            request.Append("delete from Reservations where ID=");
+            request.Append(inId);
+            request.Append(";");
+
+            SqlCommand commandeDelete = new SqlCommand(request.ToString());
+            commandeDelete.ExecuteNonQuery();
+
+            request.Clear();
+            request.Append("delete from Matches where ID=");
+            request.Append(inId);
+            request.Append(";");
+
+            SqlCommand commandeDelete2 = new SqlCommand(request.ToString());
+            commandeDelete2.ExecuteNonQuery();
+        }
+
+        public void UpdateMatch(int newId, int oldId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        {
+            StringBuilder request = new StringBuilder();
+            request.Append("update Matches set ID=");
+            request.Append(newId);
+            request.Append("update Matches set CoupeID=");
+            request.Append(inCoupeID);
+            request.Append(",StadeID=");
+            request.Append(inStade.Id);
+            request.Append(",DomicileID=");
+            request.Append(inDom.Id);
+            request.Append(",VisiteurID=");
+            request.Append(inVisiteur.Id);
+            request.Append(",ScoreDomicile=");
+            request.Append(inSED);
+            request.Append(",ScoreVisiteur=");
+            request.Append(inSEV);
+            request.Append(",Date=");
+            request.Append(inDate.ToString());
+            request.Append(" where ID=");
+            request.Append(oldId);
+            request.Append(";");
+
+            SqlCommand commandeUpdate = new SqlCommand(request.ToString());
+            commandeUpdate.ExecuteNonQuery();
+        }
     }
 }

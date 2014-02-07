@@ -81,6 +81,11 @@ namespace DataAccessLayer
             return DataAccessLayer.GetAllReservations();
         }
 
+        public List<Joueur> GetJoueursOfEquipe(int inEquipeId)
+        {
+            return DataAccessLayer.GetJoueursOfEquipe(inEquipeId);
+        }
+
         public Utilisateur GetUtilsateurByLogin(string inLogin)
         {
             return DataAccessLayer.GetUtilsateurByLogin(inLogin);
@@ -91,9 +96,20 @@ namespace DataAccessLayer
             return DataAccessLayer.GetCoupeById(inId);
         }
 
-        public List<Joueur> GetJoueursOfEquipe(int inEquipeId)
+        public void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
         {
-            return DataAccessLayer.GetJoueursOfEquipe(inEquipeId);
+            DataAccessLayer.AjouterMatch(inId, inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
         }
+
+        public void SupprimerMatch(int inId)
+        {
+            DataAccessLayer.SupprimerMatch(inId);
+        }
+
+        public void UpdateMatch(int newId, int oldId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        {
+            DataAccessLayer.UpdateMatch( newId, oldId, inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
+        }
+    
     }
 }
