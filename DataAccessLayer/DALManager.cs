@@ -73,7 +73,7 @@ namespace DataAccessLayer
 
         public List<Utilisateur> GetAllUtilisateurs()
         {
-            return DataAccessLayer.;
+            return DataAccessLayer.GetAllUtilisateurs();
         }
 
         public List<Reservation> GetAllReservations()
