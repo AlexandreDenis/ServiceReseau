@@ -106,12 +106,57 @@ namespace DataAccessLayer
 
         public List<Stade> GetAllStades()
         {
-            return null;
+            string request = "select * from Stades;";
+            DataTable dataTable = SelectByAdapter(request);
+            List<Stade> result = new List<Stade>();
+            int inId;
+            string inNom;
+            string inAdresse;
+            int inNbPlaces;
+            float inPC;
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                inId = (int)row[dataTable.Columns[0].ColumnName];
+                inNom = row[dataTable.Columns[1].ColumnName].ToString();
+                inAdresse = row[dataTable.Columns[2].ColumnName].ToString();
+                inNbPlaces = (int)row[dataTable.Columns[3].ColumnName];
+                inPC = (float)row[dataTable.Columns[4].ColumnName];
+
+                result.Add(new Stade(inId, inNom, inAdresse, inNbPlaces, inPC));
+            }
+
+            return result;
         }
 
         public List<Match> GetAllMatchs()
         {
-            return null;
+            string request = "select * from Stades;";
+            DataTable dataTable = SelectByAdapter(request);
+            List<Match> result = new List<Match>();
+           /* int inId;
+            int inCoupeID;
+            DateTime inDate;
+            Equipe inDom;
+            Equipe inVisiteur;
+            double inPrix;
+            int inSED;
+            int inSEV; 
+            Stade inStade;
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                inId = (int)row[dataTable.Columns[0].ColumnName];
+                inCoupeID = (int)row[dataTable.Columns[1].ColumnName];
+                inNom = row[dataTable.Columns[1].ColumnName].ToString();
+                inAdresse = row[dataTable.Columns[2].ColumnName].ToString();
+                inNbPlaces = (int)row[dataTable.Columns[3].ColumnName];
+                inPC = (float)row[dataTable.Columns[4].ColumnName];
+
+                result.Add(new Stade(inId, inNom, inAdresse, inNbPlaces, inPC));
+            }
+            */
+            return result;
         }
 
         public List<Utilisateur> GetAllUtilisateurs()
