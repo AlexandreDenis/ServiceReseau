@@ -90,5 +90,10 @@ namespace DataAccessLayer
         {
             return DataAccessLayer.GetCoupeById(inId);
         }
+
+        public List<Joueur> GetJoueursOfEquipe(int inEquipeId)
+        {
+            return DataAccessLayer.GetJoueursOfEquipe(inEquipeId);
+        }
     }
 }

@@ -25,8 +25,10 @@ namespace QuidditchWPF
     public partial class ListeDesJoueurs : Window
     {
         protected List<Equipe> _listEquipes;
+        protected List<Joueur> _listJoueurs;
         protected PreferenceUtilisateur _preferenceUtilisateur;
         private MainWindow _mainWindow;
+        CoupeManager cp;
 
         public ListeDesJoueurs(PreferenceUtilisateur prefUser, MainWindow mainWindow)
         {
@@ -36,26 +38,42 @@ namespace QuidditchWPF
 
             _preferenceUtilisateur = prefUser;
 
-            CoupeManager cp = new CoupeManager();
+            cp = new CoupeManager();
             _listEquipes = cp.GetEquipes();
 
-            comboBoxEquipes.ItemsSource = _listEquipes;
-            inputPoste.ItemsSource = Enum.GetValues(typeof(PosteJoueur));
-
             if (_listEquipes.Count > 0)
+            {
+                _listJoueurs = cp.GetJoueursOfEquipe(_listEquipes[0].Id);
+
+                comboBoxEquipes.ItemsSource = _listEquipes;
+                inputPoste.ItemsSource = Enum.GetValues(typeof(PosteJoueur));
+
+                listviewEquipe.DataContext = _listJoueurs;
+                comboBoxEquipes.SelectedItem = _listEquipes[0];
+                this.DataContext = _listEquipes[0];
+                Grid.DataContext = _listJoueurs[0];
+            }
+            /*if (_listEquipes.Count > 0)
             {
                 listviewEquipe.DataContext = _listEquipes[0].Joueurs;
                 comboBoxEquipes.SelectedItem = _listEquipes[0];
                 this.DataContext = _listEquipes[0];
-                Grid.DataContext = _listEquipes[0].Joueurs[0];
-            }
+                if (_listEquipes[0].Joueurs.Count > 0)
+                    Grid.DataContext = _listEquipes[0].Joueurs[0];
+            }*/
         }
 
         protected void onComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            _listJoueurs = cp.GetJoueursOfEquipe(_listEquipes[comboBoxEquipes.SelectedIndex].Id);
             this.DataContext = comboBoxEquipes.SelectedItem;
+            listviewEquipe.DataContext = _listJoueurs;
+            if (_listJoueurs.Count > 0)
+                Grid.DataContext = _listJoueurs[0];
+            /*this.DataContext = comboBoxEquipes.SelectedItem;
             listviewEquipe.DataContext = _listEquipes[comboBoxEquipes.SelectedIndex].Joueurs;
-            Grid.DataContext = _listEquipes[comboBoxEquipes.SelectedIndex].Joueurs[0];
+            if(_listEquipes[comboBoxEquipes.SelectedIndex].Joueurs.Count > 0)
+                Grid.DataContext = _listEquipes[comboBoxEquipes.SelectedIndex].Joueurs[0];*/
         }
 
         protected void onListViewSelectionChanged(object sender, SelectionChangedEventArgs e)

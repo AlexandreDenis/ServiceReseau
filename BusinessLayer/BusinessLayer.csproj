@@ -52,6 +52,10 @@
       <Project>{0c3f676a-44d1-44a2-ac72-ec218ba2d1b4}</Project>
       <Name>EntitiesLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StubDataAccessLayer\StubDataAccessLayer.csproj">
+      <Project>{080e32de-7e22-4c9f-8694-245be5c5079e}</Project>
+      <Name>StubDataAccessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using EntitiesLayer;
 using DataAccessLayer;
+//using StubDataAccessLayer;
 
 namespace BusinessLayer
 {
@@ -15,6 +17,7 @@ namespace BusinessLayer
         public CoupeManager()
         {
             _manager = DalManager.GetInstance(DALProvider.SQLSERVER);
+            //_manager = new DalManager();
         }
 
         /*renvoie toutes les coupes*/
@@ -138,6 +141,11 @@ namespace BusinessLayer
             }
 
             return res;
+        }
+
+        public List<Joueur> GetJoueursOfEquipe(int inEquipeId)
+        {
+            return _manager.GetJoueursOfEquipe(inEquipeId);
         }
     }
 }

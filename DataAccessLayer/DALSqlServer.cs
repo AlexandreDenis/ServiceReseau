@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 using EntitiesLayer;
 
@@ -64,8 +65,6 @@ namespace DataAccessLayer
             string inPrenom;
             DateTime inDateNaiss;
             PosteJoueur inPoste;
-            int inSelection;
-            int inScore;
 
             foreach (DataRow row in dataTable.Rows)
             {
@@ -73,11 +72,9 @@ namespace DataAccessLayer
                 inPrenom = row[dataTable.Columns[1].ColumnName].ToString();
                 inNom = row[dataTable.Columns[2].ColumnName].ToString();
                 inDateNaiss = (DateTime)row[dataTable.Columns[3].ColumnName];
-                inPoste = (PosteJoueur)row[dataTable.Columns[4].ColumnName];
-                inSelection = (int)row[dataTable.Columns[5].ColumnName];
-                inScore = (int)row[dataTable.Columns[6].ColumnName];
+                inPoste = (PosteJoueur)row[dataTable.Columns[5].ColumnName];
 
-                result.Add(new Joueur(inId, inNom, inPrenom, inDateNaiss, inPoste, inSelection, inScore));
+                result.Add(new Joueur(inId, inNom, inPrenom, inDateNaiss, inPoste, 0, 0));
             }
 
             return result;
@@ -131,31 +128,90 @@ namespace DataAccessLayer
 
         public List<Match> GetAllMatchs()
         {
-            string request = "select * from Stades;";
+            string request = "select * from Matchs;";
             DataTable dataTable = SelectByAdapter(request);
             List<Match> result = new List<Match>();
-           /* int inId;
+            int inId;
             int inCoupeID;
+            int inStadeID;
+            Stade inStade;
             DateTime inDate;
             Equipe inDom;
             Equipe inVisiteur;
-            double inPrix;
+            int inDomID;
+            int inVisiteurID;
             int inSED;
             int inSEV; 
-            Stade inStade;
 
             foreach (DataRow row in dataTable.Rows)
             {
                 inId = (int)row[dataTable.Columns[0].ColumnName];
                 inCoupeID = (int)row[dataTable.Columns[1].ColumnName];
+                inStadeID = (int)row[dataTable.Columns[2].ColumnName];
+                inDomID = (int)row[dataTable.Columns[4].ColumnName];
+                inVisiteurID = (int)row[dataTable.Columns[5].ColumnName];
+                inSED = (int)row[dataTable.Columns[6].ColumnName];
+                inSEV = (int)row[dataTable.Columns[7].ColumnName];
+                inDate = (DateTime)row[dataTable.Columns[8].ColumnName];
+
+                /*Récupération des Entities selon les Ids récupérés*/
+                inStade = getStadeById(inStadeID);
+                inDom = getEquipeById(inDomID);
+                inVisiteur = getEquipeById(inVisiteurID);
+
+                result.Add(new Match(inId, inCoupeID, (DateTime)inDate, inDom, inVisiteur, 50.0, inSED, inSEV, inStade));
+            }
+            
+            return result;
+        }
+
+        private Stade getStadeById(int inStadeID)
+        {
+            string request = "select * from Stades where ID = " + inStadeID + ";";
+            DataTable dataTable = SelectByAdapter(request);
+            Stade result = null;
+            int inId;
+            string inNom;
+            string inAdresse;
+            int inNbPlaces;
+            float inPC;
+
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+
+                inId = (int)row[dataTable.Columns[0].ColumnName];
                 inNom = row[dataTable.Columns[1].ColumnName].ToString();
                 inAdresse = row[dataTable.Columns[2].ColumnName].ToString();
                 inNbPlaces = (int)row[dataTable.Columns[3].ColumnName];
                 inPC = (float)row[dataTable.Columns[4].ColumnName];
 
-                result.Add(new Stade(inId, inNom, inAdresse, inNbPlaces, inPC));
+                result = new Stade(inId, inNom, inAdresse, inNbPlaces, inPC);
             }
-            */
+
+            return result;
+        }
+
+        private Equipe getEquipeById(int inEquipeID)
+        {
+            string request = "select * from Equipes where ID = " + inEquipeID + ";";
+            DataTable dataTable = SelectByAdapter(request);
+            Equipe result = null;
+            int inId;
+            string inPays;
+            string inNom;
+
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+
+                inId = (int)row[dataTable.Columns[0].ColumnName];
+                inPays = row[dataTable.Columns[1].ColumnName].ToString();
+                inNom = row[dataTable.Columns[2].ColumnName].ToString();
+
+                result = new Equipe(inId, inNom, inPays);
+            }
+
             return result;
         }
 
@@ -166,7 +222,126 @@ namespace DataAccessLayer
 
         public List<Reservation> GetAllReservations()
         {
-            return null;
+            string request = "select * from Reservations;";
+            DataTable dataTable = SelectByAdapter(request);
+            List<Reservation> result = new List<Reservation>();
+            int inId;
+            Match inMatch;
+            int inNPR;
+            Spectateur inSpect;
+            int inSpectId;
+            int inMatchId;
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                inId = (int)row[dataTable.Columns[0].ColumnName];
+                inSpectId = (int)row[dataTable.Columns[1].ColumnName];
+                inMatchId = (int)row[dataTable.Columns[2].ColumnName];
+                inNPR = (int)row[dataTable.Columns[3].ColumnName];
+
+                /*Récupération des Entities selon les Ids récupérés*/
+                inSpect = getSpectateurById(inSpectId);
+                inMatch = getMatchById(inMatchId);
+
+                result.Add(new Reservation(inId,inMatch,inNPR,inSpect));
+            }
+
+            return result;
+        }
+
+        private Match getMatchById(int inMatchId)
+        {
+            string request = "select * from Matchs where ID = " + inMatchId + ";";
+            DataTable dataTable = SelectByAdapter(request);
+            Match result = null;
+            int inId;
+            int inCoupeID;
+            int inStadeID;
+            Stade inStade;
+            DateTime inDate;
+            Equipe inDom;
+            Equipe inVisiteur;
+            int inDomID;
+            int inVisiteurID;
+            int inSED;
+            int inSEV; 
+
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+
+                inId = (int)row[dataTable.Columns[0].ColumnName];
+                inCoupeID = (int)row[dataTable.Columns[1].ColumnName];
+                inStadeID = (int)row[dataTable.Columns[2].ColumnName];
+                inDomID = (int)row[dataTable.Columns[4].ColumnName];
+                inVisiteurID = (int)row[dataTable.Columns[5].ColumnName];
+                inSED = (int)row[dataTable.Columns[6].ColumnName];
+                inSEV = (int)row[dataTable.Columns[7].ColumnName];
+                inDate = (DateTime)row[dataTable.Columns[8].ColumnName];
+
+                /*Récupération des Entities selon les Ids récupérés*/
+                inStade = getStadeById(inStadeID);
+                inDom = getEquipeById(inDomID);
+                inVisiteur = getEquipeById(inVisiteurID);
+
+                result = new Match(inId, inCoupeID, (DateTime)inDate, inDom, inVisiteur, 50.0, inSED, inSEV, inStade);
+            }
+
+            return result;
+        }
+
+        private Spectateur getSpectateurById(int inSpectId)
+        {
+            string request = "select * from Spectateurs where ID = " + inSpectId + ";";
+            DataTable dataTable = SelectByAdapter(request);
+            Spectateur result = null;
+            int inId;
+            string inNom;
+            string inPrenom;
+            DateTime inDateNaiss;
+            string inAdresse;
+            string inEmail;
+
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+
+                inId = (int)row[dataTable.Columns[0].ColumnName];
+                inPrenom = row[dataTable.Columns[1].ColumnName].ToString();
+                inNom = row[dataTable.Columns[2].ColumnName].ToString();
+                inDateNaiss = (DateTime)row[dataTable.Columns[3].ColumnName];
+                inAdresse = row[dataTable.Columns[4].ColumnName].ToString();
+                inEmail = row[dataTable.Columns[5].ColumnName].ToString();
+
+                result = new Spectateur(inId, inNom, inPrenom, inDateNaiss, inAdresse, inEmail);
+            }
+
+            return result;
+        }
+
+        public List<Joueur> GetJoueursOfEquipe(int inEquipeId)
+        {
+            string request = "select * from Joueurs where EquipeID = " + inEquipeId + ";";
+            DataTable dataTable = SelectByAdapter(request);
+            List<Joueur> result = new List<Joueur>();
+            int inId;
+            string inNom;
+            string inPrenom;
+            DateTime inDateNaiss;
+            PosteJoueur inPoste;
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                inId = (int)row[dataTable.Columns[0].ColumnName];
+                inPrenom = row[dataTable.Columns[1].ColumnName].ToString();
+                inNom = row[dataTable.Columns[2].ColumnName].ToString();
+                inDateNaiss = (DateTime)row[dataTable.Columns[3].ColumnName];
+                inPoste = (PosteJoueur)row[dataTable.Columns[5].ColumnName];
+
+                result.Add(new Joueur(inId, inNom, inPrenom, inDateNaiss, inPoste, 0, 0));
+            }
+
+            return result;
         }
 
         public Utilisateur GetUtilsateurByLogin(string inLogin)
