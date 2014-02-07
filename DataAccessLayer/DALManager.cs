@@ -90,5 +90,21 @@ namespace DataAccessLayer
         {
             return DataAccessLayer.GetCoupeById(inId);
         }
+
+        public void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        {
+            DataAccessLayer.AjouterMatch(inId, inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
+        }
+
+        public void SupprimerMatch(int inId)
+        {
+            DataAccessLayer.SupprimerMatch(inId);
+        }
+
+        public void UpdateMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        {
+            DataAccessLayer.UpdateMatch(inId, inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
+        }
+    
     }
 }

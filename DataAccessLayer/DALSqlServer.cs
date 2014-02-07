@@ -178,5 +178,17 @@ namespace DataAccessLayer
         {
             return null;
         }
+
+        public void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        {
+        }
+
+        public void SupprimerMatch(int inId)
+        {
+        }
+
+        public void UpdateMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        {
+        }
     }
 }
