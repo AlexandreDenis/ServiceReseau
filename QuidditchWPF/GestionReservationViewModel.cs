@@ -11,7 +11,6 @@ using System.Windows;
 
 namespace QuidditchWPF
 {
-    //Yop
     public class GestionReservationViewModel
     {
         private int nextId;
