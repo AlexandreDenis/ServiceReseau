@@ -349,9 +349,27 @@ namespace DataAccessLayer
             return null;
         }
 
-        public Coupe GetCoupeById(int inId)
+        public Coupe GetCoupeById(int inCoupeId)
         {
-            return null;
+            string request = "select * from Coupes where ID = " + inCoupeId + ";";
+            DataTable dataTable = SelectByAdapter(request);
+            Coupe result = null;
+            int inId;
+            int inYear;
+            string inLibelle;
+
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+
+                inId = (int)row[dataTable.Columns[0].ColumnName];
+                inYear = (int)row[dataTable.Columns[1].ColumnName];
+                inLibelle = row[dataTable.Columns[2].ColumnName].ToString();
+
+                result = new Coupe(inId, inYear, inLibelle);
+            }
+
+            return result;
         }
 
         public void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)

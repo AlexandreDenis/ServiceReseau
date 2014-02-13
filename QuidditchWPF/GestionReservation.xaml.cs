@@ -124,7 +124,8 @@ namespace QuidditchWPF
                     listViewReservations.SelectedIndex = 0;
                 userCtrl.DataContext = listViewReservations.SelectedItem;
                 _reservations.SelectedReservation = _reservations.Reservations[listViewReservations.SelectedIndex];
-                userCtrl.comboCoupes.SelectedItem = cp.GetCoupeById(_reservations.Reservations[listViewReservations.SelectedIndex].CoupeId);
+                Coupe coupe = cp.GetCoupeById(_reservations.Reservations[listViewReservations.SelectedIndex].CoupeId);
+                userCtrl.comboCoupes.SelectedItem = coupe;
             }
         }
     }
