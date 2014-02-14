@@ -372,12 +372,38 @@ namespace DataAccessLayer
             return result;
         }
 
-        public void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        private int UpdateByCommandBuilder(string request, DataTable authors)
         {
-            StringBuilder request = new StringBuilder();
+            int result = 0;
+
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand(request.ToString(), sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
+
+                sqlDataAdapter.UpdateCommand = sqlCommandBuilder.GetUpdateCommand();
+                sqlDataAdapter.InsertCommand = sqlCommandBuilder.GetInsertCommand();
+                sqlDataAdapter.DeleteCommand = sqlCommandBuilder.GetDeleteCommand();
+
+                sqlDataAdapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+
+                result = sqlDataAdapter.Update(authors);
+            }
+
+            return result;
+        }
+
+        public void AjouterMatch(int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        {
+            /*DataTable dataTable = SelectByAdapter("select * from Matchs;");
+
+            dataTable.Rows.Add(
+
             request.Append("insert into Matchs values(");
-            request.Append(inId);
-            request.Append(",");
+            //request.Append(inId);
+            //request.Append(",");
             request.Append(inCoupeID);
             request.Append(",");
             request.Append(inStade.Id);
@@ -391,28 +417,42 @@ namespace DataAccessLayer
             request.Append(inSEV);
             request.Append(");");
 
-            SqlCommand commandeInsert = new SqlCommand(request.ToString());
-            commandeInsert.ExecuteNonQuery();
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                SqlCommand commandeInsert = new SqlCommand(request.ToString(), sqlConnection);
+                commandeInsert.ExecuteNonQuery();
+            }*/
         }
 
         public void SupprimerMatch(int inId)
         {
-            StringBuilder request = new StringBuilder();
+            /*Suppression des réservations liées au match à supprimer*/
+            DataTable dataTable = SelectByAdapter("select * from Reservations;");
 
-            request.Append("delete from Reservations where ID=");
-            request.Append(inId);
-            request.Append(";");
+            int matchId;
 
-            SqlCommand commandeDelete = new SqlCommand(request.ToString());
-            commandeDelete.ExecuteNonQuery();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                matchId = (int)row[dataTable.Columns[2].ColumnName];
 
-            request.Clear();
-            request.Append("delete from Matchs where ID=");
-            request.Append(inId);
-            request.Append(";");
+                if (matchId == inId)
+                    row.Delete();
+            }
 
-            SqlCommand commandeDelete2 = new SqlCommand(request.ToString());
-            commandeDelete2.ExecuteNonQuery();
+            UpdateByCommandBuilder("select * from Reservations;", dataTable);
+
+            /*Suppression du match*/
+            dataTable = SelectByAdapter("select * from Matchs;");
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                matchId = (int)row[dataTable.Columns[0].ColumnName];
+
+                if (matchId == inId)
+                    row.Delete();
+            }
+
+            UpdateByCommandBuilder("select * from Matchs;", dataTable);
         }
 
         public void UpdateMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
