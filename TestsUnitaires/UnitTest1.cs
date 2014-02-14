@@ -39,12 +39,29 @@ namespace TestsUnitaires
             Equipe equipe1 = data.GetAllEquipes()[0];
             Equipe equipe2 = data.GetAllEquipes()[1];
             Stade stade = data.GetAllStades()[0];
+            Coupe coupe = data.GetAllCoupes()[0];
 
-            data.AjouterMatch(0, new DateTime(), equipe1, equipe2, 10, 10, 10, stade);
+            data.AjouterMatch(coupe.Id, DateTime.Now, equipe1, equipe2, 10, 10, 10, stade);
 
             int taille2 = data.GetAllMatchs().Count;
 
-            Assert.AreEqual(taille1, taille2+1);
+            Assert.AreEqual(taille1, taille2 - 1);
+        }
+
+        [TestMethod]
+        public void TestDelMatch()
+        {
+            DalManager data = DalManager.GetInstance(DALProvider.SQLSERVER);
+
+            List<Match> matchs = data.GetAllMatchs();
+            int taille1 = matchs.Count;
+            Match m = matchs[0];
+
+            data.SupprimerMatch(m.Id);
+
+            int taille2 = data.GetAllMatchs().Count;
+
+            Assert.AreEqual(taille1, taille2 + 1);
         }
     }
 }
