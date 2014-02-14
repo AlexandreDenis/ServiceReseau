@@ -439,7 +439,7 @@ namespace DataAccessLayer
 
         public void AjouterMatch(int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
         {
-            /*DataTable dataTable = SelectByAdapter("select * from Matchs;");
+           /* DataTable dataTable = SelectByAdapter("select * from Matchs;");
 
             dataTable.Rows.Add(
 
@@ -499,28 +499,26 @@ namespace DataAccessLayer
 
         public void UpdateMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
         {
-            StringBuilder request = new StringBuilder();
+            DataTable dataTable = SelectByAdapter("select * from Matchs;");
+            int matchId;
 
-            request.Append("update Matchs set CoupeID=");
-            request.Append(inCoupeID);
-            request.Append(",StadeID=");
-            request.Append(inStade.Id);
-            request.Append(",DomicileID=");
-            request.Append(inDom.Id);
-            request.Append(",VisiteurID=");
-            request.Append(inVisiteur.Id);
-            request.Append(",ScoreDomicile=");
-            request.Append(inSED);
-            request.Append(",ScoreVisiteur=");
-            request.Append(inSEV);
-            request.Append(",Date=");
-            request.Append(inDate.ToString());
-            request.Append(" where ID=");
-            request.Append(inId);
-            request.Append(";");
+            foreach (DataRow row in dataTable.Rows)
+            {
+                matchId = (int)row[dataTable.Columns[0].ColumnName];
 
-            SqlCommand commandeUpdate = new SqlCommand(request.ToString());
-            commandeUpdate.ExecuteNonQuery();
+                if (matchId == inId)
+                {
+                    row[dataTable.Columns[1].ColumnName] = inCoupeID;
+                    row[dataTable.Columns[2].ColumnName] = inStade.Id;
+                    row[dataTable.Columns[4].ColumnName] = inDom.Id;
+                    row[dataTable.Columns[5].ColumnName] = inVisiteur.Id;
+                    row[dataTable.Columns[6].ColumnName] = inSED;
+                    row[dataTable.Columns[7].ColumnName] = inSEV;
+                    row[dataTable.Columns[8].ColumnName] = inDate;
+                }
+            }
+
+            UpdateByCommandBuilder("select * from Matchs;", dataTable);
         }
     }
 }

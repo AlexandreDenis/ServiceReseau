@@ -123,7 +123,22 @@ namespace QuidditchWPF
 
         private void onModifierClick(object sender, RoutedEventArgs e)
         {
-            
+            Match match = ((Match)listviewMatchs.SelectedItem);
+
+            if (match != null)
+            {
+                int Id = match.Id;
+                int coupeId = match.CoupeId;
+                DateTime date = match.Date;
+                Equipe dom = match.EquipeDomicile;
+                Equipe visiteur = match.EquipeVisiteur;
+                double prix = match.Prix;
+                int scoreD = match.ScoreEquipeDomicile;
+                int scoreV = match.ScoreEquipeVisiteur;
+                Stade stade = match.Stade;
+
+                cp.UpdateMatch(Id, coupeId, date, dom, visiteur, prix, scoreD, scoreV, stade);
+            }
         }
 
         private void onSupprimerClick(object sender, RoutedEventArgs e)
