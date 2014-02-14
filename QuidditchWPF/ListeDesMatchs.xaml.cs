@@ -104,6 +104,13 @@ namespace QuidditchWPF
             base.OnClosing(e);
         }
 
+        private void RefreshMatchs()
+        {
+            _listMatchsCourant = cp.GetListeMatchsCoupe(_listCoupes[comboBoxCoupes.SelectedIndex].Id);
+            listviewMatchs.DataContext = _listMatchsCourant;
+            comboBoxCoupes.SelectedItem = _listCoupes[comboBoxCoupes.SelectedIndex];
+        }
+
         private void onAjouterClick(object sender, RoutedEventArgs e)
         {
             Match match = ((Match)listviewMatchs.SelectedItem);
@@ -118,6 +125,8 @@ namespace QuidditchWPF
             Stade stade = (Stade)inputStade.SelectedItem;
 
             cp.AjouterMatch(coupeId, date, dom, visiteur, prix, scoreD, scoreV, stade);
+
+            RefreshMatchs();
         }
 
         private void onModifierClick(object sender, RoutedEventArgs e)
@@ -146,6 +155,8 @@ namespace QuidditchWPF
 
             if(match != null)
                 cp.SupprimerMatch(match.Id);
+
+            RefreshMatchs();
         }
     }
 }
