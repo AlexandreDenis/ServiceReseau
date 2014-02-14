@@ -49,9 +49,9 @@
                 <TextBox Name="inputScoreDomicile" Width="410" Text="{Binding ScoreEquipeDomicile}" Grid.Column="1" Grid.Row="6"/>
             </Grid>
             <DockPanel DockPanel.Dock="Bottom">
-                <Button Name="Ajouter" Content="Ajouter"  DockPanel.Dock="Right"/>
-                <Button Name="Modifier" Content="Modifier"  DockPanel.Dock="Right"/>
-                <Button Name="Supprimer" Content="Supprimer"  DockPanel.Dock="Right" />
+                <Button Name="Ajouter" Content="Ajouter"  DockPanel.Dock="Right" Click="onAjouterClick"/>
+                <Button Name="Modifier" Content="Modifier"  DockPanel.Dock="Right" Click="onModifierClick"/>
+                <Button Name="Supprimer" Content="Supprimer"  DockPanel.Dock="Right" Click="onSupprimerClick"/>
                 <Label></Label>
             </DockPanel>
         </StackPanel>

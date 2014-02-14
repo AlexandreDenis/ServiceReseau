@@ -375,7 +375,7 @@ namespace DataAccessLayer
         public void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
         {
             StringBuilder request = new StringBuilder();
-            request.Append("insert into Matches values(");
+            request.Append("insert into Matchs values(");
             request.Append(inId);
             request.Append(",");
             request.Append(inCoupeID);
@@ -407,7 +407,7 @@ namespace DataAccessLayer
             commandeDelete.ExecuteNonQuery();
 
             request.Clear();
-            request.Append("delete from Matches where ID=");
+            request.Append("delete from Matchs where ID=");
             request.Append(inId);
             request.Append(";");
 
@@ -415,12 +415,11 @@ namespace DataAccessLayer
             commandeDelete2.ExecuteNonQuery();
         }
 
-        public void UpdateMatch(int newId, int oldId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        public void UpdateMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
         {
             StringBuilder request = new StringBuilder();
-            request.Append("update Matches set ID=");
-            request.Append(newId);
-            request.Append("update Matches set CoupeID=");
+
+            request.Append("update Matchs set CoupeID=");
             request.Append(inCoupeID);
             request.Append(",StadeID=");
             request.Append(inStade.Id);
@@ -435,7 +434,7 @@ namespace DataAccessLayer
             request.Append(",Date=");
             request.Append(inDate.ToString());
             request.Append(" where ID=");
-            request.Append(oldId);
+            request.Append(inId);
             request.Append(";");
 
             SqlCommand commandeUpdate = new SqlCommand(request.ToString());

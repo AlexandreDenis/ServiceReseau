@@ -106,9 +106,9 @@ namespace DataAccessLayer
             DataAccessLayer.SupprimerMatch(inId);
         }
 
-        public void UpdateMatch(int newId, int oldId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        public void UpdateMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
         {
-            DataAccessLayer.UpdateMatch( newId, oldId, inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
+            DataAccessLayer.UpdateMatch( inId, inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
         }
     
     }

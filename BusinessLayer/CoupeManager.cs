@@ -147,5 +147,10 @@ namespace BusinessLayer
         {
             return _manager.GetJoueursOfEquipe(inEquipeId);
         }
+
+        public void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        {
+            _manager.AjouterMatch(inId, inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
+        }
     }
 }
