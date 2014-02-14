@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Security.Cryptography;
 
 using EntitiesLayer;
 
@@ -217,7 +218,23 @@ namespace DataAccessLayer
 
         public List<Utilisateur> GetAllUtilisateurs()
         {
-            return null;
+            string request = "select * from Utilisateur;";
+            DataTable dataTable = SelectByAdapter(request);
+            List<Utilisateur> usrs = new List<Utilisateur>();
+            string inId;
+            string inLogin;
+            string inPassword;
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                inId = row[dataTable.Columns[0].ColumnName].ToString();
+                inLogin = row[dataTable.Columns[1].ColumnName].ToString();
+                inPassword = row[dataTable.Columns[2].ColumnName].ToString();
+
+                usrs.Add(new Utilisateur(inId, inId, inLogin, inPassword));
+            }
+
+            return usrs;
         }
 
         public List<Reservation> GetAllReservations()
@@ -344,9 +361,34 @@ namespace DataAccessLayer
             return result;
         }
 
-        public Utilisateur GetUtilsateurByLogin(string inLogin)
+        public Utilisateur GetUtilsateurByLogin(string inLogin, string inPassword)
         {
-            return null;
+            //Utilisateur(id login password)
+            string request = "select * from Utilisateur where Login = '" + inLogin + "';";
+            DataTable dataTable = SelectByAdapter(request);
+            Utilisateur usr = null;
+
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+                string id = row[dataTable.Columns[0].ColumnName].ToString();
+                string login = row[dataTable.Columns[1].ColumnName].ToString();
+                string password = row[dataTable.Columns[2].ColumnName].ToString();
+
+                SHA1 sha1 = SHA1.Create();
+                byte[] hashData = sha1.ComputeHash(Encoding.Default.GetBytes(inPassword));
+                StringBuilder stringHashData = new StringBuilder();
+
+                for (int i = 0; i < hashData.Length; ++i)
+                {
+                    stringHashData.Append(hashData[i].ToString("x2"));
+                }
+
+                if (password.Equals(stringHashData.ToString()))
+                    usr = new Utilisateur(id, id, login, inPassword);
+            }
+
+            return usr;
         }
 
         public Coupe GetCoupeById(int inCoupeId)

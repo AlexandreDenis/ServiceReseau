@@ -51,9 +51,9 @@ namespace BusinessLayer
         }
 
         /*renvoie l'utilisateur correspondant au login*/
-        public Utilisateur GetUser(string inLogin)
+        public Utilisateur GetUser(string inLogin, string inPassword)
         {
-            return _manager.GetUtilsateurByLogin(inLogin);
+            return _manager.GetUtilsateurByLogin(inLogin, inPassword);
         }
 
         public List<Reservation> GetReservations()
@@ -132,7 +132,7 @@ namespace BusinessLayer
         public bool checkConnexionUser(string inLogin, string inPassword)
         {
             bool res = false;
-            Utilisateur user = GetUser(inLogin);
+            Utilisateur user = GetUser(inLogin,inPassword);
 
             if (user != null)
             {

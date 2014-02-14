@@ -86,9 +86,9 @@ namespace DataAccessLayer
             return DataAccessLayer.GetJoueursOfEquipe(inEquipeId);
         }
 
-        public Utilisateur GetUtilsateurByLogin(string inLogin)
+        public Utilisateur GetUtilsateurByLogin(string inLogin, string inPassword)
         {
-            return DataAccessLayer.GetUtilsateurByLogin(inLogin);
+            return DataAccessLayer.GetUtilsateurByLogin(inLogin,inPassword);
         }
 
         public Coupe GetCoupeById(int inId)
