@@ -45,9 +45,6 @@ namespace QuidditchWPF
 
             //on prévient que l'exception a bien été gérée par l'application
             e.Handled = true;
-
-            //fermeture de l'application
-            this.Shutdown();
         }
     }
 }

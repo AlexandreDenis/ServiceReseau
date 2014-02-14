@@ -107,6 +107,7 @@ namespace QuidditchWPF
         private void onAjouterClick(object sender, RoutedEventArgs e)
         {
             Match match = ((Match)listviewMatchs.SelectedItem);
+
             int Id = match.Id;
             int coupeId = match.CoupeId;
             DateTime date = match.Date;
@@ -117,17 +118,20 @@ namespace QuidditchWPF
             int scoreV = match.ScoreEquipeVisiteur;
             Stade stade = match.Stade;
 
-            cp.AjouterMatch(Id, coupeId, date, dom, visiteur, prix, scoreD, scoreV, stade);
+            cp.AjouterMatch(coupeId, date, dom, visiteur, prix, scoreD, scoreV, stade);
         }
 
         private void onModifierClick(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void onSupprimerClick(object sender, RoutedEventArgs e)
         {
+            Match match = (Match)listviewMatchs.SelectedItem;
 
+            if(match != null)
+                cp.SupprimerMatch(match.Id);
         }
     }
 }

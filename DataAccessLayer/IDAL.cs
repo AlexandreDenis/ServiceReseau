@@ -19,7 +19,7 @@ namespace DataAccessLayer
         Coupe GetCoupeById(int inId);
         Utilisateur GetUtilsateurByLogin(string inLogin, string inPassword);
 
-        void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade);
+        void AjouterMatch(int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade);
         void SupprimerMatch(int inId);
         void UpdateMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade);
         List<Joueur> GetJoueursOfEquipe(int inEquipeId);

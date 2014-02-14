@@ -148,9 +148,19 @@ namespace BusinessLayer
             return _manager.GetJoueursOfEquipe(inEquipeId);
         }
 
-        public void AjouterMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        public void AjouterMatch(int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
         {
-            _manager.AjouterMatch(inId, inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
+            _manager.AjouterMatch(inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
+        }
+
+        public void SupprimerMatch(int inId)
+        {
+            _manager.SupprimerMatch(inId);
+        }
+
+        public void UpdateMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
+        {
+            _manager.UpdateMatch(inId, inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
         }
     }
 }
