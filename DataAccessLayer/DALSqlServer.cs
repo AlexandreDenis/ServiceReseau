@@ -439,31 +439,11 @@ namespace DataAccessLayer
 
         public void AjouterMatch(int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
         {
-           /* DataTable dataTable = SelectByAdapter("select * from Matchs;");
+            DataTable dataTable = SelectByAdapter("select * from Matchs;");
 
-            dataTable.Rows.Add(
+            dataTable.Rows.Add(null, inCoupeID, inStade.Id,1,inDom.Id, inVisiteur.Id, inSED, inSEV, inDate);
 
-            request.Append("insert into Matchs values(");
-            //request.Append(inId);
-            //request.Append(",");
-            request.Append(inCoupeID);
-            request.Append(",");
-            request.Append(inStade.Id);
-            request.Append(",");
-            request.Append(inDom.Id);
-            request.Append(",");
-            request.Append(inVisiteur.Id);
-            request.Append(",");
-            request.Append(inSED);
-            request.Append(",");
-            request.Append(inSEV);
-            request.Append(");");
-
-            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
-            {
-                SqlCommand commandeInsert = new SqlCommand(request.ToString(), sqlConnection);
-                commandeInsert.ExecuteNonQuery();
-            }*/
+            UpdateByCommandBuilder("select * from Matchs;", dataTable);
         }
 
         public void SupprimerMatch(int inId)
