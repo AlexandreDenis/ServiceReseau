@@ -108,15 +108,14 @@ namespace QuidditchWPF
         {
             Match match = ((Match)listviewMatchs.SelectedItem);
 
-            int Id = match.Id;
-            int coupeId = match.CoupeId;
-            DateTime date = match.Date;
-            Equipe dom = match.EquipeDomicile;
-            Equipe visiteur = match.EquipeVisiteur;
-            double prix = match.Prix;
-            int scoreD = match.ScoreEquipeDomicile;
-            int scoreV = match.ScoreEquipeVisiteur;
-            Stade stade = match.Stade;
+            int coupeId = ((Coupe)comboBoxCoupes.SelectedItem).Id;
+            DateTime date = Convert.ToDateTime(inputDate.Text);
+            Equipe dom = (Equipe)inputEquipeDomicile.SelectedItem;
+            Equipe visiteur = (Equipe)inputEquipeVisiteur.SelectedItem;
+            double prix = Convert.ToDouble(inputPrix.Text);
+            int scoreD = Convert.ToInt32(inputScoreDomicile.Text);
+            int scoreV = Convert.ToInt32(inputScoreVisiteur.Text);
+            Stade stade = (Stade)inputStade.SelectedItem;
 
             cp.AjouterMatch(coupeId, date, dom, visiteur, prix, scoreD, scoreV, stade);
         }
