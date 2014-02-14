@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataAccessLayer;
 using EntitiesLayer;
+using System.Collections.Generic;
 
 namespace TestsUnitaires
 {
@@ -9,12 +10,41 @@ namespace TestsUnitaires
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestUtilisateur()
         {
-            DalSqlServer data = new DalSqlServer(@"Data Source=jwdaec5gna.database.windows.net;Initial Catalog=QuidditchWorldCup;Integrated Security=False;User ID=QuidditchWorldCups@jwdaec5gna;Password=&aqwXSZ2;Connect Timeout=15;TrustServerCertificate=False");
-            Utilisateur usr = data.GetUtilsateurByLogin("toto", "toto");
+            string toto = "toto";
 
-            Assert.IsNotNull(usr);
+            DalManager data = DalManager.GetInstance(DALProvider.SQLSERVER);
+            Utilisateur usr = data.GetUtilsateurByLogin(toto, toto);
+
+            Assert.IsTrue(usr.Login.Equals(toto));
+        }
+
+        [TestMethod]
+        public void TestGetMatch()
+        {
+            DalManager data = DalManager.GetInstance(DALProvider.SQLSERVER);
+            List<Match> matchs = data.GetAllMatchs();
+
+            Assert.IsNotNull(matchs);
+        }
+
+        [TestMethod]
+        public void TestAddMatch()
+        {
+            DalManager data = DalManager.GetInstance(DALProvider.SQLSERVER);
+
+            int taille1 = data.GetAllMatchs().Count;
+
+            Equipe equipe1 = data.GetAllEquipes()[0];
+            Equipe equipe2 = data.GetAllEquipes()[1];
+            Stade stade = data.GetAllStades()[0];
+
+            data.AjouterMatch(0, new DateTime(), equipe1, equipe2, 10, 10, 10, stade);
+
+            int taille2 = data.GetAllMatchs().Count;
+
+            Assert.AreEqual(taille1, taille2+1);
         }
     }
 }
