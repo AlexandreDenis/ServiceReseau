@@ -381,11 +381,11 @@ namespace DataAccessLayer
 
                 for (int i = 0; i < hashData.Length; ++i)
                 {
-                    stringHashData.Append(hashData[i].ToString("x2"));
+                    stringHashData.Append(hashData[i].ToString());
                 }
 
                 if (password.Equals(stringHashData.ToString()))
-                    usr = new Utilisateur(id, id, login, inPassword);
+                    usr = new Utilisateur(id, id, inLogin, inPassword);
             }
 
             return usr;
