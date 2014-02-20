@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EntitiesLayer
 {
+    /// <summary>
+    /// Enumération des différents postes de joueur dans une équipe de Quidditch
+    /// </summary>
     public enum PosteJoueur
     {
         None,
@@ -17,6 +20,9 @@ namespace EntitiesLayer
 
     public class Joueur : Personne
     {
+        /// <summary>
+        /// Poste occupé par le joueur
+        /// </summary>
         private PosteJoueur _poste;
         public PosteJoueur Poste
         {
@@ -24,6 +30,9 @@ namespace EntitiesLayer
             set { _poste = value; }
         }
 
+        /// <summary>
+        /// Nombre de sélection du joueur
+        /// </summary>
         private int _nbSelection;
         public int NbSelection
         {
@@ -31,6 +40,9 @@ namespace EntitiesLayer
             set { _nbSelection = value; }
         }
         
+        /// <summary>
+        /// Nombre de points du joueur
+        /// </summary>
         private int _score;
         public int Score
         {
@@ -38,6 +50,16 @@ namespace EntitiesLayer
             set { _score = value; }
         }
 
+        /// <summary>
+        /// Constructeur de la classe Joueur
+        /// </summary>
+        /// <param name="inId">Id du nouveau joueur</param>
+        /// <param name="inNom">Nom du nouveau joueur</param>
+        /// <param name="inPrenom">Prénom du nouveau joueur</param>
+        /// <param name="inDateNaiss">Date de naissance du nouveau joueur</param>
+        /// <param name="inPoste">Poste du nouveau joueur</param>
+        /// <param name="inSelection">Nombre de sélection du nouveau joueur</param>
+        /// <param name="inScore">Score du nouveau joueur</param>
         public Joueur(int inId, string inNom, string inPrenom, DateTime inDateNaiss, PosteJoueur inPoste, int inSelection, int inScore)
             : base(inId, inNom, inPrenom, inDateNaiss)
         {
@@ -46,6 +68,10 @@ namespace EntitiesLayer
             this.Score = inScore;
         }
 
+        /// <summary>
+        /// Chaîne de caractères du joueur
+        /// </summary>
+        /// <returns>Chaîne correspondante</returns>
         public override string ToString()
         {
             StringBuilder res = new StringBuilder();

@@ -9,6 +9,9 @@ namespace TestsUnitaires
     [TestClass]
     public class UnitTest1
     {
+        /// <summary>
+        /// Test de test Unitaire
+        /// </summary>
         [TestMethod]
         public void TestUtilisateur()
         {
@@ -20,15 +23,21 @@ namespace TestsUnitaires
             Assert.IsTrue(usr.Login.Equals(toto));
         }
 
+        /// <summary>
+        /// Test Unitaire pour l'accès à un match à partir de la BDD
+        /// </summary>
         [TestMethod]
         public void TestGetMatch()
         {
             DalManager data = DalManager.GetInstance(DALProvider.SQLSERVER);
             List<Match> matchs = data.GetAllMatchs();
 
-            Assert.IsNotNull(matchs);
+            Assert.AreNotEqual(matchs.Count, 0);
         }
 
+        /// <summary>
+        /// Test Unitaire pour l'ajout d'un match à la BDD
+        /// </summary>
         [TestMethod]
         public void TestAddMatch()
         {
@@ -48,6 +57,9 @@ namespace TestsUnitaires
             Assert.AreEqual(taille1, taille2 - 1);
         }
 
+        /// <summary>
+        /// Test Unitaire pour la suppression d'un match de la BDD
+        /// </summary>
         [TestMethod]
         public void TestDelMatch()
         {
@@ -62,6 +74,36 @@ namespace TestsUnitaires
             int taille2 = data.GetAllMatchs().Count;
 
             Assert.AreEqual(taille1, taille2 + 1);
+        }
+
+        /// <summary>
+        /// Test Unitaire pour la modification d'un match de la BDD
+        /// </summary>
+        [TestMethod]
+        public void TestModifMatch()
+        {
+            DalManager data = DalManager.GetInstance(DALProvider.SQLSERVER);
+
+            List<Match> matchs = data.GetAllMatchs();
+            Match m = matchs[0];
+            int oldScoreDom = m.ScoreEquipeDomicile;
+            int id = m.Id;
+
+            data.UpdateMatch(m.Id, m.CoupeId,
+                m.Date,
+                m.EquipeDomicile,
+                m.EquipeVisiteur,
+                m.Prix,
+                m.ScoreEquipeDomicile + 100,
+                m.ScoreEquipeVisiteur,
+                m.Stade);
+
+            matchs = data.GetAllMatchs();
+
+            m = matchs[0];
+
+            Assert.AreEqual(m.ScoreEquipeDomicile, oldScoreDom + 100);
+
         }
     }
 }

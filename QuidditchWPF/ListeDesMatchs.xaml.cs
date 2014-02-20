@@ -30,6 +30,11 @@ namespace QuidditchWPF
         protected PreferenceUtilisateur _preferenceUtilisateur;
         private MainWindow _mainWindow;
 
+        /// <summary>
+        /// Constructeur de la classe ListeDesMatchs
+        /// </summary>
+        /// <param name="prefUser">Gestion des préférences utilisateurs</param>
+        /// <param name="mainWindow">Fenêtre principale</param>
         public ListeDesMatchs(PreferenceUtilisateur prefUser, MainWindow mainWindow)
         {
             InitializeComponent();
@@ -54,6 +59,11 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Lorsqu'on change de coupe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void onComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             listviewMatchs.DataContext = cp.GetListeMatchsCoupe(_listCoupes[comboBoxCoupes.SelectedIndex].Id);
@@ -61,11 +71,20 @@ namespace QuidditchWPF
             this.DataContext = comboBoxCoupes.SelectedItem;
         }
 
+        /// <summary>
+        /// Lorsqu'on change de match
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void onListViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Grid.DataContext = listviewMatchs.SelectedItem;
         }
 
+        /// <summary>
+        /// A l'ouverture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnSourceInitialized(EventArgs e)
         {
             if (File.Exists(_preferenceUtilisateur.Login + ".xml"))
@@ -89,6 +108,10 @@ namespace QuidditchWPF
             base.OnSourceInitialized(e);
         }
 
+        /// <summary>
+        /// A la fermeture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             _preferenceUtilisateur.WindowStateMatchs = this.WindowState;
@@ -104,6 +127,9 @@ namespace QuidditchWPF
             base.OnClosing(e);
         }
 
+        /// <summary>
+        /// Rafraîchit la liste des matchs en les rappelant à partir de la BDD
+        /// </summary>
         private void RefreshMatchs()
         {
             _listMatchsCourant = cp.GetListeMatchsCoupe(_listCoupes[comboBoxCoupes.SelectedIndex].Id);
@@ -111,6 +137,11 @@ namespace QuidditchWPF
             comboBoxCoupes.SelectedItem = _listCoupes[comboBoxCoupes.SelectedIndex];
         }
 
+        /// <summary>
+        /// Gestion du click sur le bouton d'ajout d'un match
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void onAjouterClick(object sender, RoutedEventArgs e)
         {
             Match match = ((Match)listviewMatchs.SelectedItem);
@@ -129,6 +160,11 @@ namespace QuidditchWPF
             RefreshMatchs();
         }
 
+        /// <summary>
+        /// Gestion du click sur le bouton de modification d'un match
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void onModifierClick(object sender, RoutedEventArgs e)
         {
             Match match = ((Match)listviewMatchs.SelectedItem);
@@ -149,6 +185,11 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Gestion du click sur le bouton de suppression d'un match
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void onSupprimerClick(object sender, RoutedEventArgs e)
         {
             Match match = (Match)listviewMatchs.SelectedItem;

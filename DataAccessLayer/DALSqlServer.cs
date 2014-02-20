@@ -14,13 +14,25 @@ namespace DataAccessLayer
 {
     public class DalSqlServer : IDal
     {
+        /// <summary>
+        /// Chaîne de connexion à la BDD
+        /// </summary>
         private string _connectionString;
 
+        /// <summary>
+        /// Constructeur de la classe DalSqlServer
+        /// </summary>
+        /// <param name="inConnexion">Chaîne de connexion</param>
         public DalSqlServer(string inConnexion)
         {
             _connectionString = inConnexion;
         }
 
+        /// <summary>
+        /// Méthode d'accès à la BDD
+        /// </summary>
+        /// <param name="request">Requête à appeler sur la BDD</param>
+        /// <returns>Réponse de la BDD sous forme de tableau</returns>
         private DataTable SelectByAdapter(string request)
         {
             DataTable results = new DataTable();
@@ -35,6 +47,10 @@ namespace DataAccessLayer
             return results;
         }
 
+        /// <summary>
+        /// Renvoie toutes les coupes
+        /// </summary>
+        /// <returns>Liste des coupes</returns>
         public List<Coupe> GetAllCoupes()
         {
             string request = "select * from Coupes;";
@@ -56,6 +72,10 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Renvoie tous les joueurs
+        /// </summary>
+        /// <returns>Liste des joueurs</returns>
         public List<Joueur> GetAllJoueurs()
         {
             string request = "select * from Joueurs;";
@@ -81,6 +101,10 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Renvoie toutes les équipes
+        /// </summary>
+        /// <returns>Liste des équipes</returns>
         public List<Equipe> GetAllEquipes()
         {
             string request = "select * from Equipes;";
@@ -102,6 +126,10 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Renvoie tous les stades
+        /// </summary>
+        /// <returns>Liste des stades</returns>
         public List<Stade> GetAllStades()
         {
             string request = "select * from Stades;";
@@ -127,6 +155,10 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Renvoie tous les matchs
+        /// </summary>
+        /// <returns>Liste des matchs</returns>
         public List<Match> GetAllMatchs()
         {
             string request = "select * from Matchs;";
@@ -166,6 +198,11 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Renvoie le stade associé à un Id
+        /// </summary>
+        /// <param name="inId">Id du stade à rechercher</param>
+        /// <returns>Une instance de stade ou null</returns>
         private Stade getStadeById(int inStadeID)
         {
             string request = "select * from Stades where ID = " + inStadeID + ";";
@@ -193,6 +230,11 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Renvoie l'équipe associée à un Id
+        /// </summary>
+        /// <param name="inId">Id de l'équipe à rechercher</param>
+        /// <returns>Une instance d'équipe ou null</returns>
         private Equipe getEquipeById(int inEquipeID)
         {
             string request = "select * from Equipes where ID = " + inEquipeID + ";";
@@ -216,6 +258,10 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Renvoie tous les utilisateurs du programme
+        /// </summary>
+        /// <returns>Liste des utilisateurs</returns>
         public List<Utilisateur> GetAllUtilisateurs()
         {
             string request = "select * from Utilisateur;";
@@ -237,6 +283,10 @@ namespace DataAccessLayer
             return usrs;
         }
 
+        /// <summary>
+        /// Renvoie toutes les réservations
+        /// </summary>
+        /// <returns>Liste des réservations</returns>
         public List<Reservation> GetAllReservations()
         {
             string request = "select * from Reservations;";
@@ -266,6 +316,11 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Renvoie le match associé à un Id
+        /// </summary>
+        /// <param name="inId">Id du match à rechercher</param>
+        /// <returns>Une instance de match ou null</returns>
         private Match getMatchById(int inMatchId)
         {
             string request = "select * from Matchs where ID = " + inMatchId + ";";
@@ -307,6 +362,11 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Renvoie le spectateur associé à un Id
+        /// </summary>
+        /// <param name="inId">Id du spectateur à rechercher</param>
+        /// <returns>Une instance de spectateur ou null</returns>
         private Spectateur getSpectateurById(int inSpectId)
         {
             string request = "select * from Spectateurs where ID = " + inSpectId + ";";
@@ -336,6 +396,11 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Renvoie la liste de tous les joueurs d'une équipe
+        /// </summary>
+        /// <param name="inEquipeId">Id de l'équipe pour laquelle on veut les joueurs</param>
+        /// <returns>Liste des joueurs de l'équipe correspondante</returns>
         public List<Joueur> GetJoueursOfEquipe(int inEquipeId)
         {
             string request = "select * from Joueurs where EquipeID = " + inEquipeId + ";";
@@ -361,6 +426,12 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Renvoie l'utilisateur correspondant au login
+        /// </summary>
+        /// <param name="inLogin">Login à rechercher dans la base</param>
+        /// <param name="inPassword">Mot de passe entré pour le login</param>
+        /// <returns>Une instance d'utilisateur ou null</returns>
         public Utilisateur GetUtilsateurByLogin(string inLogin, string inPassword)
         {
             //Utilisateur(id login password)
@@ -391,6 +462,11 @@ namespace DataAccessLayer
             return usr;
         }
 
+        /// <summary>
+        /// Renvoie la coupe associée à un Id
+        /// </summary>
+        /// <param name="inId">Id de la coupe à rechercher</param>
+        /// <returns>Une instance de coupe ou null</returns>
         public Coupe GetCoupeById(int inCoupeId)
         {
             string request = "select * from Coupes where ID = " + inCoupeId + ";";
@@ -414,6 +490,12 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Méthode de modification de la BDD
+        /// </summary>
+        /// <param name="request">Requête à exécuter sur la BDD</param>
+        /// <param name="authors">Tableau de la table modifiée</param>
+        /// <returns></returns>
         private int UpdateByCommandBuilder(string request, DataTable authors)
         {
             int result = 0;
@@ -437,6 +519,17 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Ajout d'un match dans la BDD
+        /// </summary>
+        /// <param name="inCoupeID">Id de la coupe du match</param>
+        /// <param name="inDate">Date du match</param>
+        /// <param name="inDom">Equipe à domicile</param>
+        /// <param name="inVisiteur">Equipe visiteur</param>
+        /// <param name="inPrix">Prix des places pour le match</param>
+        /// <param name="inSED">Score de l'équipe à domicile</param>
+        /// <param name="inSEV">Score de l'équipe extérieure</param>
+        /// <param name="inStade">Stade du match</param>
         public void AjouterMatch(int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
         {
             DataTable dataTable = SelectByAdapter("select * from Matchs;");
@@ -446,6 +539,10 @@ namespace DataAccessLayer
             UpdateByCommandBuilder("select * from Matchs;", dataTable);
         }
 
+        /// <summary>
+        /// Suppression d'un match de la BDD
+        /// </summary>
+        /// <param name="inId">Id du match à supprimer de la BDD</param>
         public void SupprimerMatch(int inId)
         {
             /*Suppression des réservations liées au match à supprimer*/
@@ -477,6 +574,17 @@ namespace DataAccessLayer
             UpdateByCommandBuilder("select * from Matchs;", dataTable);
         }
 
+        /// <summary>
+        /// Mise à jour des informations sur un match dans la BDD
+        /// </summary>
+        /// <param name="inCoupeID">Id de la coupe du match</param>
+        /// <param name="inDate">Date du match</param>
+        /// <param name="inDom">Equipe à domicile</param>
+        /// <param name="inVisiteur">Equipe visiteur</param>
+        /// <param name="inPrix">Prix des places pour le match</param>
+        /// <param name="inSED">Score de l'équipe à domicile</param>
+        /// <param name="inSEV">Score de l'équipe extérieure</param>
+        /// <param name="inStade">Stade du match</param>
         public void UpdateMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade)
         {
             DataTable dataTable = SelectByAdapter("select * from Matchs;");

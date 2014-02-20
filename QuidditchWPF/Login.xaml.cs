@@ -21,12 +21,21 @@ namespace QuidditchWPF
     /// </summary>
     public partial class Login : Window
     {
+        /// <summary>
+        /// Constructeur de la classe Login
+        /// Première fenêtre ouverte au démarrage du programme
+        /// </summary>
         public Login()
         {
             InitializeComponent();
             loginWPF.Focus();
         }
         
+        /// <summary>
+        /// Gestion du click sur le bouton de connexion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void onClickConnexionButton(object sender, RoutedEventArgs e)
         {
             CoupeManager cp = new CoupeManager();
@@ -56,6 +65,11 @@ namespace QuidditchWPF
 #endif
         }
 
+        /// <summary>
+        /// Gestion de l'appui sur Entrée pour lancer la connexion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void onKeyDownHandler(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Enter)

@@ -11,6 +11,10 @@ namespace QuidditchConsole
 {
     class Program
     {
+        /// <summary>
+        /// Point d'entrée du programme pour la version console
+        /// </summary>
+        /// <param name="args">Arguments passés au programme</param>
         static void Main(string[] args)
         {
             CoupeManager cp = new CoupeManager();

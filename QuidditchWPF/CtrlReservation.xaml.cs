@@ -20,6 +20,9 @@ namespace QuidditchWPF
     /// </summary>
     public partial class CtrlReservation : UserControl
     {
+        /// <summary>
+        /// Constructeur de la classe CtrlReservation
+        /// </summary>
         public CtrlReservation()
         {
             InitializeComponent();
@@ -27,6 +30,11 @@ namespace QuidditchWPF
 
         public event EventHandler CoupesChanged;
 
+        /// <summary>
+        /// Quand on change la sélection de la combobox des coupes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboCoupes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.CoupesChanged != null)

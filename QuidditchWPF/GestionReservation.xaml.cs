@@ -31,6 +31,11 @@ namespace QuidditchWPF
         protected List<Coupe> _listCoupes;
         private MainWindow _mainWindow;
 
+        /// <summary>
+        /// Constructeur de la classe GestionReservation
+        /// </summary>
+        /// <param name="prefUser">Gestion des préférences utilisateurs</param>
+        /// <param name="mainWindow">Fenêtre principale</param>
         public GestionReservation(PreferenceUtilisateur prefUser, MainWindow mainWindow)
         {
             InitializeComponent();
@@ -64,6 +69,11 @@ namespace QuidditchWPF
             buttons.DataContext = _reservations;
         }
 
+        /// <summary>
+        /// Quand on change de coupe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void EventHandler_CoupesChanged(object sender, EventArgs e)
         {
 
@@ -78,6 +88,10 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// A l'ouverture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnSourceInitialized(EventArgs e)
         {
             if (File.Exists(_preferenceUtilisateur.Login + ".xml"))
@@ -101,6 +115,10 @@ namespace QuidditchWPF
             base.OnSourceInitialized(e);
         }
 
+        /// <summary>
+        /// A la fermeture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             _preferenceUtilisateur.WindowStateReservations = this.WindowState;
@@ -116,6 +134,11 @@ namespace QuidditchWPF
             base.OnClosing(e);
         }
 
+        /// <summary>
+        /// Quand on change de réservation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void onClickListview(object sender, SelectionChangedEventArgs e)
         {
             if (_reservations.Count() > 0)

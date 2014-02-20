@@ -12,6 +12,9 @@ namespace QuidditchWPF
     [Serializable]
     public class PreferenceUtilisateur
     {
+        /// <summary>
+        /// Login de l'utilisateur courant du programme
+        /// </summary>
         private string _login;
         public string Login
         {
@@ -238,6 +241,9 @@ namespace QuidditchWPF
             set { _windowStateReservations = value; }
         }
 
+        /// <summary>
+        /// Sauvegarde des préférences de l'utilisateur
+        /// </summary>
         public void Save()
         {
             StreamWriter sw = null;
@@ -259,6 +265,9 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Chargement des préférences de l'utilisateur
+        /// </summary>
         public void Load()
         {
             StreamReader sr = null;

@@ -28,6 +28,11 @@ namespace QuidditchWPF
         protected PreferenceUtilisateur _preferenceUtilisateur;
         private MainWindow _mainWindow;
 
+        /// <summary>
+        /// Constructeur de la classe ListeDesCoupes
+        /// </summary>
+        /// <param name="prefUser">Gestion des préférences utilisateurs</param>
+        /// <param name="mainWindow">Fenêtre principale</param>
         public ListeDesCoupes(PreferenceUtilisateur prefUser, MainWindow mainWindow)
         {
             InitializeComponent();
@@ -45,11 +50,20 @@ namespace QuidditchWPF
             this.DataContext = _listCoupes.First();
         }
 
+        /// <summary>
+        /// Lorsque qu'on change de coupe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void onClickListBox(object sender, SelectionChangedEventArgs e)
         {
             this.DataContext = ListBoxCoupes.SelectedItem;
         }
 
+        /// <summary>
+        /// A l'ouverture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnSourceInitialized(EventArgs e)
         {
             if (File.Exists(_preferenceUtilisateur.Login + ".xml"))
@@ -73,6 +87,10 @@ namespace QuidditchWPF
             base.OnSourceInitialized(e);
         }
 
+        /// <summary>
+        /// A la fermeture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             _preferenceUtilisateur.WindowStateCoupes = this.WindowState;

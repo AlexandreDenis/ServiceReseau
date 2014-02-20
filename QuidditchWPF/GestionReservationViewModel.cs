@@ -15,6 +15,9 @@ namespace QuidditchWPF
     {
         private int nextId;
 
+        /// <summary>
+        /// Reservation sélectionnée
+        /// </summary>
         private ReservationViewModel _selectedReservation;
         public ReservationViewModel SelectedReservation
         {
@@ -22,6 +25,9 @@ namespace QuidditchWPF
             set { _selectedReservation = value; }
         }
         
+        /// <summary>
+        /// Conteneurs des réservations
+        /// </summary>
         private ObservableCollection<ReservationViewModel> _reservations;
         public ObservableCollection<ReservationViewModel> Reservations
         {
@@ -29,6 +35,10 @@ namespace QuidditchWPF
             set { _reservations = value; }
         }
 
+        /// <summary>
+        /// Constructeur de la classe GestionReservationViewModel
+        /// </summary>
+        /// <param name="inReservations">Réservations à gérer</param>
         public GestionReservationViewModel(ObservableCollection<Reservation> inReservations)
         {
             _reservations = new ObservableCollection<ReservationViewModel>();
@@ -39,6 +49,9 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Ajout d'une réservation au gestionnaire
+        /// </summary>
         public void AddReservation()
         {
             _reservations.Add(new ReservationViewModel(new Reservation
@@ -49,16 +62,27 @@ namespace QuidditchWPF
                     )));
         }
 
+        /// <summary>
+        /// Suppression d'une réservation au gestionnaire
+        /// </summary>
         public void SuppReservation()
         {
             _reservations.Remove(SelectedReservation);
         }
 
+        /// <summary>
+        /// Modification de la réservation courante
+        /// -> inutile vu que binding en place
+        /// </summary>
         public void ModifReservation()
         {
             //TODO
         }
 
+        /// <summary>
+        /// Vérification à effectuer avant l'ajout d'une réservation
+        /// </summary>
+        /// <returns></returns>
         public bool CanAddReservation()
         {
             bool res = true;
@@ -77,6 +101,9 @@ namespace QuidditchWPF
             return res;
         }
 
+        /// <summary>
+        /// Gestion du click sur le bouton d'ajout
+        /// </summary>
         private ICommand _ajoutCommande;
         public ICommand ajoutCommande
         {
@@ -89,6 +116,9 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Gestion du click sur le bouton de suppression
+        /// </summary>
         private ICommand _suppCommande;
         public ICommand suppCommande
         {
@@ -103,6 +133,9 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Gestion du click sur le bouton de modification
+        /// </summary>
         private ICommand _modifCommande;
         public ICommand modifCommande
         {
@@ -117,11 +150,18 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Constructeur par défaut de la classe GestionReservationViewModel
+        /// </summary>
         public GestionReservationViewModel ()
 	    {
             nextId = 200;
 	    }
 
+        /// <summary>
+        /// Renvoie le nombre de réservations gérées
+        /// </summary>
+        /// <returns>Nombre de réservations gérées</returns>
         public int Count()
         {
             return _reservations.Count;

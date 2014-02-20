@@ -9,6 +9,10 @@ namespace StubDataAccessLayer
 {
     public class DalManager
     {
+        /// <summary>
+        /// Renvoie tous les joueurs
+        /// </summary>
+        /// <returns>Liste des joueurs</returns>
         public List<Joueur> GetAllJoueurs()
         {
             List<Joueur> joueurs = new List<Joueur>();
@@ -43,6 +47,10 @@ namespace StubDataAccessLayer
             return joueurs;
         }
 
+        /// <summary>
+        /// Renvoie toutes les équipes
+        /// </summary>
+        /// <returns>Liste des équipes</returns>
         public List<Equipe> GetAllEquipes()
         {
             List<Equipe> equipes = new List<Equipe>();
@@ -74,6 +82,10 @@ namespace StubDataAccessLayer
             return equipes;
         }
 
+        /// <summary>
+        /// Renvoie tous les stades
+        /// </summary>
+        /// <returns>Liste des stades</returns>
         public List<Stade> GetAllStades()
         {
             List<Stade> stades = new List<Stade>();
@@ -84,6 +96,10 @@ namespace StubDataAccessLayer
             return stades;
         }
 
+        /// <summary>
+        /// Renvoie tous les matchs
+        /// </summary>
+        /// <returns>Liste des matchs</returns>
         public List<Match> GetAllMatchs()
         {
             List<Equipe> equipes = GetAllEquipes();
@@ -98,6 +114,10 @@ namespace StubDataAccessLayer
             return matchs;
         }
 
+        /// <summary>
+        /// Renvoie toutes les coupes
+        /// </summary>
+        /// <returns>Liste des coupes</returns>
         public List<Coupe> GetAllCoupes()
         {
             List<Coupe> coupes = new List<Coupe>();
@@ -108,6 +128,10 @@ namespace StubDataAccessLayer
             return coupes;
         }
 
+        /// <summary>
+        /// Renvoie tous les utilisateurs du programme
+        /// </summary>
+        /// <returns>Liste des utilisateurs</returns>
         public List<Utilisateur> GetAllUtilisateurs()
         {
             List<Utilisateur> utilisateurs = new List<Utilisateur>();
@@ -118,6 +142,10 @@ namespace StubDataAccessLayer
             return utilisateurs;
         }
 
+        /// <summary>
+        /// Renvoie toutes les réservations
+        /// </summary>
+        /// <returns>Liste des réservations</returns>
         public List<Reservation> GetAllReservations()
         {
             List<Reservation> reservations = new List<Reservation>();
@@ -130,6 +158,12 @@ namespace StubDataAccessLayer
             return reservations;
         }
 
+        /// <summary>
+        /// Renvoie l'utilisateur correspondant au login
+        /// </summary>
+        /// <param name="inLogin">Login à rechercher dans la base</param>
+        /// <param name="inPassword">Mot de passe entré pour le login</param>
+        /// <returns>Une instance d'utilisateur ou null</returns>
         public Utilisateur GetUtilsateurByLogin(string inLogin)
         {
             Utilisateur utilReturn = null;
@@ -145,6 +179,11 @@ namespace StubDataAccessLayer
             return utilReturn;
         }
 
+        /// <summary>
+        /// Renvoie la coupe associée à un Id
+        /// </summary>
+        /// <param name="inId">Id de la coupe à rechercher</param>
+        /// <returns>Une instance de coupe ou null</returns>
         public Coupe GetCoupeById(int inId)
         {
             Coupe coupeReturn = null;

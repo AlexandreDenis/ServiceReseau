@@ -8,6 +8,9 @@ namespace EntitiesLayer
 {
     public class Spectateur : Personne
     {
+        /// <summary>
+        /// Adresse du spectateur
+        /// </summary>
         private string _adresse;
         public string Adresse
         {
@@ -15,6 +18,9 @@ namespace EntitiesLayer
             set { _adresse = value; }
         }
 
+        /// <summary>
+        /// Adresse mail du spectateur
+        /// </summary>
         private string _email;
         public string Email
         {
@@ -22,6 +28,15 @@ namespace EntitiesLayer
             set { _email = value; }
         }
 
+        /// <summary>
+        /// Constructeur de la classe Spectateur
+        /// </summary>
+        /// <param name="inId">Id du nouveau spectateur</param>
+        /// <param name="inNom">Nom du nouveau spectateur</param>
+        /// <param name="inPrenom">Prénom du nouveau spectateur</param>
+        /// <param name="inDateNaiss">Date de naissance du nouveau spectateur</param>
+        /// <param name="inAdresse">Adresse du nouveau du nouveau spectateur</param>
+        /// <param name="inEmail">Adresse mail du nouveau spectateur</param>
         public Spectateur(int inId, string inNom, string inPrenom, DateTime inDateNaiss, string inAdresse, string inEmail)
             : base(inId, inNom, inPrenom, inDateNaiss)
         {

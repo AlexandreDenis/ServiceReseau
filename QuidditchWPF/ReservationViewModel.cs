@@ -14,6 +14,9 @@ namespace QuidditchWPF
     {
         private CoupeManager cp;
 
+        /// <summary>
+        /// Réservation correspondante
+        /// </summary>
         private Reservation _reservation;
         public Reservation Reservation
         {
@@ -21,6 +24,9 @@ namespace QuidditchWPF
             set { _reservation = value; }
         }
 
+        /// <summary>
+        /// Id de la coupe du match de la réservation
+        /// </summary>
         public int CoupeId
         {
             /*get
@@ -45,6 +51,9 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Match de la réservation
+        /// </summary>
         public Match Match
         {
             get
@@ -61,6 +70,9 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Nom du spectateur ayant effectué la réservation
+        /// </summary>
         public string Nom
         {
             get
@@ -75,6 +87,9 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Prénom du spectateur ayant effectué la réservation
+        /// </summary>
         public string Prenom
         {
             get
@@ -87,6 +102,9 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Adresse du spectateur ayant effectué la réservation
+        /// </summary>
         public string Adresse
         {
             get
@@ -99,6 +117,9 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Nombre de places réservées
+        /// </summary>
         public int NbPlaces
         {
             get
@@ -114,6 +135,9 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Prix total de la réservation
+        /// </summary>
         public double Prix
         {
             get
@@ -129,6 +153,9 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Prix unitaire de chaque place pour la réservation
+        /// </summary>
         public double PrixUnite
         {
             get
@@ -145,6 +172,10 @@ namespace QuidditchWPF
             }
         }
 
+        /// <summary>
+        /// Constructeur de la classe ReservationViewModel
+        /// </summary>
+        /// <param name="inReserv"></param>
         public ReservationViewModel(Reservation inReserv)
         {
             _reservation = inReserv;

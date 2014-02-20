@@ -28,6 +28,11 @@ namespace QuidditchWPF
         protected PreferenceUtilisateur _preferenceUtilisateur;
         private MainWindow _mainWindow;
 
+        /// <summary>
+        /// Constructeur de la classe ListeDesEquipes
+        /// </summary>
+        /// <param name="prefUser">Gestion des préférences utilisateurs</param>
+        /// <param name="mainWindow">Fenêtre principale</param>
         public ListeDesEquipes(PreferenceUtilisateur prefUser, MainWindow mainWindow)
         {
             InitializeComponent();
@@ -46,16 +51,31 @@ namespace QuidditchWPF
             this.DataContext = _listEquipe.First();
         }
 
+        /// <summary>
+        /// Quand on change d'équipe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void onClickListView(object sender, SelectionChangedEventArgs e)
         {
             this.DataContext = ListViewEquipes.SelectedItem;
         }
 
+        /// <summary>
+        /// Comparaison entre deux équipes
+        /// </summary>
+        /// <param name="equipe1"></param>
+        /// <param name="equipe2"></param>
+        /// <returns></returns>
         public static int compareEquipes(Equipe equipe1, Equipe equipe2)
         {
             return equipe1.Nom.CompareTo(equipe2.Nom);
         }
 
+        /// <summary>
+        /// A l'ouverture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnSourceInitialized(EventArgs e)
         {
             if (File.Exists(_preferenceUtilisateur.Login + ".xml"))
@@ -79,6 +99,10 @@ namespace QuidditchWPF
             base.OnSourceInitialized(e);
         }
 
+        /// <summary>
+        /// A la fermeture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             _preferenceUtilisateur.WindowStateEquipes = this.WindowState;

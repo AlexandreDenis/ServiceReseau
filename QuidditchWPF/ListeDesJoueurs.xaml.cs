@@ -30,6 +30,11 @@ namespace QuidditchWPF
         private MainWindow _mainWindow;
         CoupeManager cp;
 
+        /// <summary>
+        /// Constructeur de la classe ListeDesJoueurs
+        /// </summary>
+        /// <param name="prefUser">Gestion des préférences utilisateurs</param>
+        /// <param name="mainWindow">Fenêtre principale</param>
         public ListeDesJoueurs(PreferenceUtilisateur prefUser, MainWindow mainWindow)
         {
             InitializeComponent();
@@ -63,6 +68,11 @@ namespace QuidditchWPF
             }*/
         }
 
+        /// <summary>
+        /// Lorsqu'on change d'équipe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void onComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _listJoueurs = cp.GetJoueursOfEquipe(_listEquipes[comboBoxEquipes.SelectedIndex].Id);
@@ -76,11 +86,20 @@ namespace QuidditchWPF
                 Grid.DataContext = _listEquipes[comboBoxEquipes.SelectedIndex].Joueurs[0];*/
         }
 
+        /// <summary>
+        /// Lorsqu'on clique sur un autre joueur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void onListViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Grid.DataContext = listviewEquipe.SelectedItem;
         }
 
+        /// <summary>
+        /// A l'ouverture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnSourceInitialized(EventArgs e)
         {
             if (File.Exists(_preferenceUtilisateur.Login + ".xml"))
@@ -104,6 +123,10 @@ namespace QuidditchWPF
             base.OnSourceInitialized(e);
         }
 
+        /// <summary>
+        /// A la fermeture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             _preferenceUtilisateur.WindowStateJoueurs = this.WindowState;

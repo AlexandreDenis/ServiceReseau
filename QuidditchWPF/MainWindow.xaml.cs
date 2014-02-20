@@ -32,6 +32,10 @@ namespace QuidditchWPF
         private ListeDesMatchs ldm;
         private GestionReservation gr;
 
+        /// <summary>
+        /// Constructeur de la fenêtre principale (MainWindow)
+        /// </summary>
+        /// <param name="inLogin">Login de l'utilisateur courant du programme</param>
         public MainWindow(string inLogin)
         {
             InitializeComponent();
@@ -40,6 +44,10 @@ namespace QuidditchWPF
             _preferenceUtilisateur = new PreferenceUtilisateur();
         }
 
+        /// <summary>
+        /// A l'ouverture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnSourceInitialized(EventArgs e)
         {
             _preferenceUtilisateur.Login = currentUser;
@@ -56,6 +64,10 @@ namespace QuidditchWPF
             base.OnSourceInitialized(e);
         }
 
+        /// <summary>
+        /// A la fermeture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             _preferenceUtilisateur.Login = currentUser;
@@ -86,6 +98,11 @@ namespace QuidditchWPF
             base.OnClosing(e);
         }
 
+        /// <summary>
+        /// Gestion du click sur le bouton de gestion des coupes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void onClickCoupesButton(object sender, RoutedEventArgs e)
         {
             ldc = new ListeDesCoupes(_preferenceUtilisateur, this);
@@ -93,6 +110,11 @@ namespace QuidditchWPF
             ldc.Show();
         }
 
+        /// <summary>
+        /// Gestion du click sur le bouton de gestion des joueurs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void onClickJoueursButton(object sender, RoutedEventArgs e)
         {
             ldj = new ListeDesJoueurs(_preferenceUtilisateur, this);
@@ -100,6 +122,11 @@ namespace QuidditchWPF
             ldj.Show();
         }
 
+        /// <summary>
+        /// Gestion du click sur le bouton de gestion des équipes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void onClickEquipesButton(object sender, RoutedEventArgs e)
         {
             lde = new ListeDesEquipes(_preferenceUtilisateur, this);
@@ -107,6 +134,11 @@ namespace QuidditchWPF
             lde.Show();
         }
 
+        /// <summary>
+        /// Gestion du click sur le bouton de gestion des stades
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void onClickStadesButton(object sender, RoutedEventArgs e)
         {
             lds = new ListedesStades(_preferenceUtilisateur, this);
@@ -114,6 +146,11 @@ namespace QuidditchWPF
             lds.Show();
         }
 
+        /// <summary>
+        /// Gestion du click sur le bouton de gestion des matchs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void onClickMatchsButton(object sender, RoutedEventArgs e)
         {
             ldm = new ListeDesMatchs(_preferenceUtilisateur, this);
@@ -121,6 +158,11 @@ namespace QuidditchWPF
             ldm.Show();
         }
 
+        /// <summary>
+        /// Gestion du click sur le bouton de gestion des réservations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void onClickReservationButton(object sender, RoutedEventArgs e)
         {
             gr = new GestionReservation(_preferenceUtilisateur, this);

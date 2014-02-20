@@ -14,12 +14,21 @@ namespace QuidditchWPF
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Au démarrage de l'application
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
             DispatcherUnhandledException += App_DispatcherUnhandledException;
         }
 
+        /// <summary>
+        /// Méthode de gestion des exceptions pour le programme
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
             string path = "app.log";

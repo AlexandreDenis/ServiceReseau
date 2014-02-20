@@ -28,6 +28,11 @@ namespace QuidditchWPF
         protected PreferenceUtilisateur _preferenceUtilisateur;
         private MainWindow _mainWindow;
 
+        /// <summary>
+        /// Constructeur de la classe ListeDesStades
+        /// </summary>
+        /// <param name="prefUser">Gestion des préférences utilisateurs</param>
+        /// <param name="mainWindow">Fenêtre principale</param>
         public ListedesStades(PreferenceUtilisateur prefUser, MainWindow mainWindow)
         {
             InitializeComponent();
@@ -45,12 +50,21 @@ namespace QuidditchWPF
             this.DataContext = _listStades.First();
         }
 
+        /// <summary>
+        /// Quand on change de stade
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void onClickListBox(object sender, SelectionChangedEventArgs e)
         {
             this.DataContext = ListBoxStades.SelectedItem;
             ListBoxStades.DataContext = _listStades;
         }
 
+        /// <summary>
+        /// A l'ouverture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnSourceInitialized(EventArgs e)
         {
             if (File.Exists(_preferenceUtilisateur.Login + ".xml"))
@@ -74,6 +88,10 @@ namespace QuidditchWPF
             base.OnSourceInitialized(e);
         }
 
+        /// <summary>
+        /// A la fermeture de la fenêtre
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             _preferenceUtilisateur.WindowStateStades = this.WindowState;

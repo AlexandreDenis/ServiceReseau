@@ -8,6 +8,9 @@ namespace EntitiesLayer
 {
     public class Stade : EntityObject
     {
+        /// <summary>
+        /// Nom du stade
+        /// </summary>
         private string _nom;
         public string Nom
         {
@@ -15,6 +18,9 @@ namespace EntitiesLayer
             set { _nom = value; }
         }
 
+        /// <summary>
+        /// Adresse du stade
+        /// </summary>
         private string _adresse;
         public string Adresse
         {
@@ -22,6 +28,9 @@ namespace EntitiesLayer
             set { _adresse = value; }
         }
 
+        /// <summary>
+        /// Nombre de places disponibles dans le stade
+        /// </summary>
         private int _nbPlaces;
         public int NbPlaces
         {
@@ -29,6 +38,9 @@ namespace EntitiesLayer
             set { _nbPlaces = value; }
         }
 
+        /// <summary>
+        /// Pourcentage de commission du stade
+        /// </summary>
         private double _pourcentageCommission;
         public double PourcentageCommission
         {
@@ -36,6 +48,14 @@ namespace EntitiesLayer
             set { _pourcentageCommission = value; }
         }
 
+        /// <summary>
+        /// Constructeur de la classe Stade
+        /// </summary>
+        /// <param name="inId">Id du nouveau stade</param>
+        /// <param name="inNom">Nom du nouveau stade</param>
+        /// <param name="inAdresse">Adresse du nouveau stade</param>
+        /// <param name="inNbPlaces">Nombre de places du nouveau stade</param>
+        /// <param name="inPC">Pourcentage de commission du nouveau stade</param>
         public Stade(int inId, string inNom, string inAdresse, int inNbPlaces, double inPC) : base(inId)
         {
             this.Nom = inNom;
@@ -44,6 +64,10 @@ namespace EntitiesLayer
             this.PourcentageCommission = inPC;
         }
 
+        /// <summary>
+        /// Chaîne de caractères du stade
+        /// </summary>
+        /// <returns>Chaîne correspondante</returns>
         public override string ToString()
         {
             StringBuilder res = new StringBuilder();
