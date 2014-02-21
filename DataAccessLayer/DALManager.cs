@@ -135,6 +135,16 @@ namespace DataAccessLayer
         }
 
         /// <summary>
+        /// Renvoie la liste des matchs correspondant à une coupe donnée
+        /// </summary>
+        /// <param name="inCoupeId">Id de la coupe dont on cherche les matchs</param>
+        /// <returns>Liste des matchs correspondant</returns>
+        public List<Match> GetMatchsOfCoupe(int inCoupeId)
+        {
+            return DataAccessLayer.GetMatchsOfCoupe(inCoupeId);
+        }
+
+        /// <summary>
         /// Renvoie l'utilisateur correspondant au login
         /// </summary>
         /// <param name="inLogin">Login à rechercher dans la base</param>

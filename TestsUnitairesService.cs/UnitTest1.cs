@@ -44,5 +44,16 @@ namespace TestsUnitairesService.cs
             List<SStade> sstades = service.GetAllStades();
             Assert.AreNotEqual(sstades.Count, 0);
         }
+
+        [TestMethod]
+        public void TestGetMatchs()
+        {
+            ServiceQuidditch service = new ServiceQuidditch();
+
+            SCoupe coupe = service.GetAllCoupes()[0];
+
+            List<SMatch> smatchs = service.GetMatchsOfCoupe(coupe);
+            Assert.AreNotEqual(smatchs.Count, 0);
+        }
     }
 }

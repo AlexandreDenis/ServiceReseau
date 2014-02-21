@@ -427,6 +427,50 @@ namespace DataAccessLayer
         }
 
         /// <summary>
+        /// Renvoie la liste des matchs correspondant à une coupe donnée
+        /// </summary>
+        /// <param name="inCoupeId">Id de la coupe dont on cherche les matchs</param>
+        /// <returns>Liste des matchs correspondant</returns>
+        public List<Match> GetMatchsOfCoupe(int inCoupeId)
+        {
+            string request = "select * from Matchs where CoupeID = " + inCoupeId + ";";
+            DataTable dataTable = SelectByAdapter(request);
+            List<Match> result = new List<Match>();
+            int inId;
+            int inCoupeID;
+            int inStadeID;
+            Stade inStade;
+            DateTime inDate;
+            Equipe inDom;
+            Equipe inVisiteur;
+            int inDomID;
+            int inVisiteurID;
+            int inSED;
+            int inSEV;
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                inId = (int)row[dataTable.Columns[0].ColumnName];
+                inCoupeID = (int)row[dataTable.Columns[1].ColumnName];
+                inStadeID = (int)row[dataTable.Columns[2].ColumnName];
+                inDomID = (int)row[dataTable.Columns[4].ColumnName];
+                inVisiteurID = (int)row[dataTable.Columns[5].ColumnName];
+                inSED = (int)row[dataTable.Columns[6].ColumnName];
+                inSEV = (int)row[dataTable.Columns[7].ColumnName];
+                inDate = (DateTime)row[dataTable.Columns[8].ColumnName];
+
+                /*Récupération des Entities selon les Ids récupérés*/
+                inStade = getStadeById(inStadeID);
+                inDom = getEquipeById(inDomID);
+                inVisiteur = getEquipeById(inVisiteurID);
+
+                result.Add(new Match(inId, inCoupeID, (DateTime)inDate, inDom, inVisiteur, 50.0, inSED, inSEV, inStade));
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Renvoie l'utilisateur correspondant au login
         /// </summary>
         /// <param name="inLogin">Login à rechercher dans la base</param>

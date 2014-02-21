@@ -27,5 +27,8 @@ namespace QuidditchService
 
         [OperationContract]
         List<SStade> GetAllStades();
+
+        [OperationContract]
+        List<SMatch> GetMatchsOfCoupe(SCoupe inCoupe);
     }
 }

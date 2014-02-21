@@ -77,5 +77,18 @@ namespace QuidditchService
 
             return sstades;
         }
+
+        public List<SMatch> GetMatchsOfCoupe(SCoupe inCoupe)
+        {
+            List<Match> matchs = _manager.GetMatchs();
+            List<SMatch> smatchs = new List<SMatch>();
+
+            foreach (Match mat in matchs)
+            {
+                smatchs.Add(new SMatch(mat));
+            }
+
+            return smatchs;
+        }
     }
 }

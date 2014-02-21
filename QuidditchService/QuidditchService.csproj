@@ -72,6 +72,7 @@
       <DependentUpon>ServiceQuidditch.svc</DependentUpon>
     </Compile>
     <Compile Include="SJoueur.cs" />
+    <Compile Include="SMatch.cs" />
     <Compile Include="SPersonne.cs" />
     <Compile Include="SStade.cs" />
   </ItemGroup>
