@@ -37,6 +37,18 @@
   <wsdl:message name="IServiceQuidditch_GetAllStades_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllStadesResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetMatchsOfCoupe_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMatchsOfCoupe" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetMatchsOfCoupe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMatchsOfCoupeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetUtilisateur_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUtilisateur" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetUtilisateur_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUtilisateurResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceQuidditch">
     <wsdl:operation name="CreateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/CreateUser" message="tns:IServiceQuidditch_CreateUser_InputMessage" />
@@ -57,6 +69,14 @@
     <wsdl:operation name="GetAllStades">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllStades" message="tns:IServiceQuidditch_GetAllStades_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllStadesResponse" message="tns:IServiceQuidditch_GetAllStades_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchsOfCoupe">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetMatchsOfCoupe" message="tns:IServiceQuidditch_GetMatchsOfCoupe_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetMatchsOfCoupeResponse" message="tns:IServiceQuidditch_GetMatchsOfCoupe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUtilisateur">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetUtilisateur" message="tns:IServiceQuidditch_GetUtilisateur_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetUtilisateurResponse" message="tns:IServiceQuidditch_GetUtilisateur_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceQuidditch" type="tns:IServiceQuidditch">
@@ -99,6 +119,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllStades">
       <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetAllStades" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchsOfCoupe">
+      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetMatchsOfCoupe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUtilisateur">
+      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetUtilisateur" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

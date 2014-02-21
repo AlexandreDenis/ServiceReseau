@@ -68,4 +68,22 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="SStade" nillable="true" type="tns:SStade" />
+  <xs:complexType name="ArrayOfSMatch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMatch" nillable="true" type="tns:SMatch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMatch" nillable="true" type="tns:ArrayOfSMatch" />
+  <xs:complexType name="SMatch">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SEntityObject">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SMatch" nillable="true" type="tns:SMatch" />
+  <xs:complexType name="SUtilisateur">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="SUtilisateur" nillable="true" type="tns:SUtilisateur" />
 </xs:schema>
