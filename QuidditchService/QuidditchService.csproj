@@ -74,6 +74,8 @@
     <Compile Include="SJoueur.cs" />
     <Compile Include="SMatch.cs" />
     <Compile Include="SPersonne.cs" />
+    <Compile Include="SReservation.cs" />
+    <Compile Include="SSpectateur.cs" />
     <Compile Include="SStade.cs" />
   </ItemGroup>
   <ItemGroup>

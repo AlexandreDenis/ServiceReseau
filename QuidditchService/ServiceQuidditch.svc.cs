@@ -90,5 +90,11 @@ namespace QuidditchService
 
             return smatchs;
         }
+
+        public int ReserverPlaces(SMatch inMatch, int inNbPlaces, SSpectateur inSpect)
+        {
+            //TODO
+            return 0;
+        }
     }
 }

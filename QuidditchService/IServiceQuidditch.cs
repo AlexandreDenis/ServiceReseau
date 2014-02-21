@@ -30,5 +30,8 @@ namespace QuidditchService
 
         [OperationContract]
         List<SMatch> GetMatchsOfCoupe(SCoupe inCoupe);
+
+        [OperationContract]
+        int ReserverPlaces(SMatch inMatch, int inNbPlaces, SSpectateur inSpect);
     }
 }
