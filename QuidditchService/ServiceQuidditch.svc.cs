@@ -52,9 +52,9 @@ namespace QuidditchService
             return sequipes;
         }
 
-        public List<SJoueur> GetAllJoueurs()
+        public List<SJoueur> GetJoueursOfEquipe(SEquipe inEquipe)
         {
-            List<Joueur> joueurs = _manager.GetJoueurs();
+            List<Joueur> joueurs = _manager.GetJoueursOfEquipe(inEquipe.Id);
             List<SJoueur> sjoueurs = new List<SJoueur>();
 
             foreach (Joueur jou in joueurs)
@@ -63,6 +63,19 @@ namespace QuidditchService
             }
 
             return sjoueurs;
+        }
+
+        public List<SStade> GetAllStades()
+        {
+            List<Stade> stades = _manager.GetStades();
+            List<SStade> sstades = new List<SStade>();
+
+            foreach (Stade sta in stades)
+            {
+                sstades.Add(new SStade(sta));
+            }
+
+            return sstades;
         }
     }
 }

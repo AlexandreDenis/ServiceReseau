@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
+using EntitiesLayer;
+
 namespace QuidditchService
 {
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom d'interface "IServiceQuidditch" à la fois dans le code et le fichier de configuration.
@@ -21,6 +23,9 @@ namespace QuidditchService
         List<SEquipe> GetAllEquipes();
 
         [OperationContract]
-        List<SJoueur> GetAllJoueurs();
+        List<SJoueur> GetJoueursOfEquipe(SEquipe inEquipe);
+
+        [OperationContract]
+        List<SStade> GetAllStades();
     }
 }

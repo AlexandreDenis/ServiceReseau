@@ -30,8 +30,19 @@ namespace TestsUnitairesService.cs
         public void TestGetJoueurs()
         {
             ServiceQuidditch service = new ServiceQuidditch();
-            List<SJoueur> sjoueurs = service.GetAllJoueurs();
+
+            SEquipe equipe = service.GetAllEquipes()[0];
+
+            List<SJoueur> sjoueurs = service.GetJoueursOfEquipe(equipe);
             Assert.AreNotEqual(sjoueurs.Count, 0);
+        }
+
+        [TestMethod]
+        public void TestGetStades()
+        {
+            ServiceQuidditch service = new ServiceQuidditch();
+            List<SStade> sstades = service.GetAllStades();
+            Assert.AreNotEqual(sstades.Count, 0);
         }
     }
 }

@@ -54,4 +54,18 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="SPersonne" nillable="true" type="tns:SPersonne" />
+  <xs:complexType name="ArrayOfSStade">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SStade" nillable="true" type="tns:SStade" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSStade" nillable="true" type="tns:ArrayOfSStade" />
+  <xs:complexType name="SStade">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SEntityObject">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SStade" nillable="true" type="tns:SStade" />
 </xs:schema>

@@ -25,11 +25,17 @@
   <wsdl:message name="IServiceQuidditch_GetAllEquipes_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllEquipesResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceQuidditch_GetAllJoueurs_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllJoueurs" />
+  <wsdl:message name="IServiceQuidditch_GetJoueursOfEquipe_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJoueursOfEquipe" />
   </wsdl:message>
-  <wsdl:message name="IServiceQuidditch_GetAllJoueurs_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllJoueursResponse" />
+  <wsdl:message name="IServiceQuidditch_GetJoueursOfEquipe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJoueursOfEquipeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetAllStades_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStades" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetAllStades_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStadesResponse" />
   </wsdl:message>
   <wsdl:portType name="IServiceQuidditch">
     <wsdl:operation name="CreateUser">
@@ -44,9 +50,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllEquipes" message="tns:IServiceQuidditch_GetAllEquipes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllEquipesResponse" message="tns:IServiceQuidditch_GetAllEquipes_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllJoueurs">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllJoueurs" message="tns:IServiceQuidditch_GetAllJoueurs_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllJoueursResponse" message="tns:IServiceQuidditch_GetAllJoueurs_OutputMessage" />
+    <wsdl:operation name="GetJoueursOfEquipe">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetJoueursOfEquipe" message="tns:IServiceQuidditch_GetJoueursOfEquipe_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetJoueursOfEquipeResponse" message="tns:IServiceQuidditch_GetJoueursOfEquipe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStades">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllStades" message="tns:IServiceQuidditch_GetAllStades_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllStadesResponse" message="tns:IServiceQuidditch_GetAllStades_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceQuidditch" type="tns:IServiceQuidditch">
@@ -78,8 +88,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllJoueurs">
-      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetAllJoueurs" style="document" />
+    <wsdl:operation name="GetJoueursOfEquipe">
+      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetJoueursOfEquipe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStades">
+      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetAllStades" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

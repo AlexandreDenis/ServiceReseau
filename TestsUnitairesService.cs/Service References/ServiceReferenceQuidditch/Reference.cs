@@ -33,11 +33,17 @@ namespace TestsUnitairesService.cs.ServiceReferenceQuidditch {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetAllEquipes", ReplyAction="http://tempuri.org/IServiceQuidditch/GetAllEquipesResponse")]
         System.Threading.Tasks.Task<QuidditchService.SEquipe[]> GetAllEquipesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetAllJoueurs", ReplyAction="http://tempuri.org/IServiceQuidditch/GetAllJoueursResponse")]
-        QuidditchService.SJoueur[] GetAllJoueurs();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetJoueursOfEquipe", ReplyAction="http://tempuri.org/IServiceQuidditch/GetJoueursOfEquipeResponse")]
+        QuidditchService.SJoueur[] GetJoueursOfEquipe(QuidditchService.SEquipe inEquipe);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetAllJoueurs", ReplyAction="http://tempuri.org/IServiceQuidditch/GetAllJoueursResponse")]
-        System.Threading.Tasks.Task<QuidditchService.SJoueur[]> GetAllJoueursAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetJoueursOfEquipe", ReplyAction="http://tempuri.org/IServiceQuidditch/GetJoueursOfEquipeResponse")]
+        System.Threading.Tasks.Task<QuidditchService.SJoueur[]> GetJoueursOfEquipeAsync(QuidditchService.SEquipe inEquipe);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetAllStades", ReplyAction="http://tempuri.org/IServiceQuidditch/GetAllStadesResponse")]
+        QuidditchService.SStade[] GetAllStades();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetAllStades", ReplyAction="http://tempuri.org/IServiceQuidditch/GetAllStadesResponse")]
+        System.Threading.Tasks.Task<QuidditchService.SStade[]> GetAllStadesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -91,12 +97,20 @@ namespace TestsUnitairesService.cs.ServiceReferenceQuidditch {
             return base.Channel.GetAllEquipesAsync();
         }
         
-        public QuidditchService.SJoueur[] GetAllJoueurs() {
-            return base.Channel.GetAllJoueurs();
+        public QuidditchService.SJoueur[] GetJoueursOfEquipe(QuidditchService.SEquipe inEquipe) {
+            return base.Channel.GetJoueursOfEquipe(inEquipe);
         }
         
-        public System.Threading.Tasks.Task<QuidditchService.SJoueur[]> GetAllJoueursAsync() {
-            return base.Channel.GetAllJoueursAsync();
+        public System.Threading.Tasks.Task<QuidditchService.SJoueur[]> GetJoueursOfEquipeAsync(QuidditchService.SEquipe inEquipe) {
+            return base.Channel.GetJoueursOfEquipeAsync(inEquipe);
+        }
+        
+        public QuidditchService.SStade[] GetAllStades() {
+            return base.Channel.GetAllStades();
+        }
+        
+        public System.Threading.Tasks.Task<QuidditchService.SStade[]> GetAllStadesAsync() {
+            return base.Channel.GetAllStadesAsync();
         }
     }
 }

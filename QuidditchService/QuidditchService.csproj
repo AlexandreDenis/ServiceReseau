@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="SJoueur.cs" />
     <Compile Include="SPersonne.cs" />
+    <Compile Include="SStade.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

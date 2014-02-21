@@ -38,15 +38,29 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllJoueurs">
+  <xs:element name="GetJoueursOfEquipe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="inEquipe" nillable="true" type="q3:SEquipe" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetJoueursOfEquipeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetJoueursOfEquipeResult" nillable="true" type="q4:ArrayOfSJoueur" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllStades">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllJoueursResponse">
+  <xs:element name="GetAllStadesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetAllJoueursResult" nillable="true" type="q3:ArrayOfSJoueur" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetAllStadesResult" nillable="true" type="q5:ArrayOfSStade" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
