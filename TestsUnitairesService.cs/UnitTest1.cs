@@ -13,8 +13,8 @@ namespace TestsUnitairesService.cs
         [TestMethod]
         public void TestCreateUser()
         {
-            string login = "aldec";
-            string passwd = "dednis";
+            string login = "alfddec";
+            string passwd = "dednfdis";
 
             ServiceQuidditch service = new ServiceQuidditch();
 
@@ -47,8 +47,30 @@ namespace TestsUnitairesService.cs
         public void TestGetJoueurs()
         {
             ServiceQuidditch service = new ServiceQuidditch();
-            List<SJoueur> sjoueurs = service.GetAllJoueurs();
+
+            SEquipe equipe = service.GetAllEquipes()[0];
+
+            List<SJoueur> sjoueurs = service.GetJoueursOfEquipe(equipe);
             Assert.AreNotEqual(sjoueurs.Count, 0);
+        }
+
+        [TestMethod]
+        public void TestGetStades()
+        {
+            ServiceQuidditch service = new ServiceQuidditch();
+            List<SStade> sstades = service.GetAllStades();
+            Assert.AreNotEqual(sstades.Count, 0);
+        }
+
+        [TestMethod]
+        public void TestGetMatchs()
+        {
+            ServiceQuidditch service = new ServiceQuidditch();
+
+            SCoupe coupe = service.GetAllCoupes()[0];
+
+            List<SMatch> smatchs = service.GetMatchsOfCoupe(coupe);
+            Assert.AreNotEqual(smatchs.Count, 0);
         }
     }
 }

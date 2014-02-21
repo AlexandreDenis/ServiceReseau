@@ -203,6 +203,16 @@ namespace BusinessLayer
         }
 
         /// <summary>
+        /// Renvoie la liste des matchs correspondant à une coupe donnée
+        /// </summary>
+        /// <param name="inCoupeId">Id de la coupe dont on cherche les matchs</param>
+        /// <returns>Liste des matchs correspondant</returns>
+        public List<Match> GetMatchsOfCoupe(int inCoupeId)
+        {
+            return _manager.GetMatchsOfCoupe(inCoupeId);
+        }
+
+        /// <summary>
         /// Ajout d'un match dans la BDD
         /// </summary>
         /// <param name="inCoupeID">Id de la coupe du match</param>
