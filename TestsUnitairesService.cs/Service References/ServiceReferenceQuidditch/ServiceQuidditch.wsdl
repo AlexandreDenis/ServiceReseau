@@ -31,6 +31,12 @@
   <wsdl:message name="IServiceQuidditch_GetAllJoueurs_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllJoueursResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetUtilisateur_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUtilisateur" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetUtilisateur_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUtilisateurResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceQuidditch">
     <wsdl:operation name="CreateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/CreateUser" message="tns:IServiceQuidditch_CreateUser_InputMessage" />
@@ -47,6 +53,10 @@
     <wsdl:operation name="GetAllJoueurs">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllJoueurs" message="tns:IServiceQuidditch_GetAllJoueurs_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllJoueursResponse" message="tns:IServiceQuidditch_GetAllJoueurs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUtilisateur">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetUtilisateur" message="tns:IServiceQuidditch_GetUtilisateur_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetUtilisateurResponse" message="tns:IServiceQuidditch_GetUtilisateur_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceQuidditch" type="tns:IServiceQuidditch">
@@ -80,6 +90,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllJoueurs">
       <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetAllJoueurs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUtilisateur">
+      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetUtilisateur" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

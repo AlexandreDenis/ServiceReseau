@@ -50,4 +50,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetUtilisateur">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inLogin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="inPassword" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUtilisateurResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetUtilisateurResult" nillable="true" type="q4:SUtilisateur" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

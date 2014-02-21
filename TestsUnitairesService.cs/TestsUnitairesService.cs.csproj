@@ -79,6 +79,7 @@
     <None Include="Properties\DataSources\QuidditchService.SCoupe.datasource" />
     <None Include="Properties\DataSources\QuidditchService.SEquipe.datasource" />
     <None Include="Properties\DataSources\QuidditchService.SJoueur.datasource" />
+    <None Include="Properties\DataSources\QuidditchService.SUtilisateur.datasource" />
     <None Include="Service References\ServiceReferenceQuidditch\ServiceQuidditch.wsdl" />
     <None Include="Service References\ServiceReferenceQuidditch\ServiceQuidditch.xsd">
       <SubType>Designer</SubType>

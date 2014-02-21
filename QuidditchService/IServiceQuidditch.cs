@@ -22,5 +22,8 @@ namespace QuidditchService
 
         [OperationContract]
         List<SJoueur> GetAllJoueurs();
+
+        [OperationContract]
+        SUtilisateur GetUtilisateur(string inLogin, string inPassword);
     }
 }

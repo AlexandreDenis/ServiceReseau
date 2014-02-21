@@ -245,7 +245,7 @@ namespace BusinessLayer
 
         public void CreateUser(string inLogin, string inPasswd)
         {
-            
+            _manager.CreateUser(inLogin, inPasswd);
         }
     }
 }

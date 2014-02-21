@@ -64,5 +64,18 @@ namespace QuidditchService
 
             return sjoueurs;
         }
+
+        public SUtilisateur GetUtilisateur(string inLogin, string inPassword)
+        {
+            Utilisateur user = _manager.GetUser(inLogin, inPassword);
+            SUtilisateur suser = null;
+
+            if (user != null)
+            {
+                suser = new SUtilisateur(user.Nom, user.Prenom, user.Login, user.Password);
+            }
+
+            return suser;
+        }
     }
 }

@@ -54,4 +54,8 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="SPersonne" nillable="true" type="tns:SPersonne" />
+  <xs:complexType name="SUtilisateur">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="SUtilisateur" nillable="true" type="tns:SUtilisateur" />
 </xs:schema>

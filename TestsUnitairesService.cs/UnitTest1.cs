@@ -11,6 +11,23 @@ namespace TestsUnitairesService.cs
     public class UnitTest1
     {
         [TestMethod]
+        public void TestCreateUser()
+        {
+            string login = "aldec";
+            string passwd = "dednis";
+
+            ServiceQuidditch service = new ServiceQuidditch();
+
+            SUtilisateur suser1 = service.GetUtilisateur(login,passwd);
+
+            service.CreateUser(login, passwd);
+
+            SUtilisateur suser2 = service.GetUtilisateur(login, passwd);
+
+            Assert.IsTrue(suser2 != null && suser1 == null);
+        }
+
+        [TestMethod]
         public void TestGetCoupes()
         {
             ServiceQuidditch service = new ServiceQuidditch();

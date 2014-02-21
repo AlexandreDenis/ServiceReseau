@@ -195,6 +195,11 @@ namespace DataAccessLayer
         {
             DataAccessLayer.UpdateMatch( inId, inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
         }
+
+        public void CreateUser(string inLogin, string inPassword)
+        {
+            DataAccessLayer.CreateUser(inLogin, inPassword);
+        }
     
     }
 }

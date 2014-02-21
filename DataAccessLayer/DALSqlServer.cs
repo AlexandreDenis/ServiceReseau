@@ -608,5 +608,22 @@ namespace DataAccessLayer
 
             UpdateByCommandBuilder("select * from Matchs;", dataTable);
         }
+
+        public void CreateUser(string inLogin, string inPassword)
+        {
+            DataTable dataTable = SelectByAdapter("select * from Utilisateur;");
+
+            SHA1 sha1 = SHA1.Create();
+            byte[] hashData = sha1.ComputeHash(Encoding.Default.GetBytes(inPassword));
+            StringBuilder stringHashData = new StringBuilder();
+
+            for (int i = 0; i < hashData.Length; ++i)
+            {
+                stringHashData.Append(hashData[i].ToString());
+            }
+
+            dataTable.Rows.Add(null,inLogin, stringHashData.ToString());
+            UpdateByCommandBuilder("select * from Utilisateur;", dataTable);
+        }
     }
 }
