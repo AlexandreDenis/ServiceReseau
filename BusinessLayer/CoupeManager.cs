@@ -242,5 +242,10 @@ namespace BusinessLayer
         {
             _manager.UpdateMatch(inId, inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
         }
+
+        public void CreateUser(string inLogin, string inPasswd)
+        {
+            
+        }
     }
 }
