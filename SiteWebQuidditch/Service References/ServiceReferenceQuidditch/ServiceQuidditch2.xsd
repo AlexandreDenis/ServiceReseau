@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:58720/ServiceQuidditch.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/QuidditchService" />
+  <xs:element name="CreateUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inLogin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="inPasswd" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUserResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCoupes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCoupesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetAllCoupesResult" nillable="true" type="q1:ArrayOfSCoupe" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllEquipes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllEquipesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetAllEquipesResult" nillable="true" type="q2:ArrayOfSEquipe" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetJoueursOfEquipe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="inEquipe" nillable="true" type="q3:SEquipe" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetJoueursOfEquipeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetJoueursOfEquipeResult" nillable="true" type="q4:ArrayOfSJoueur" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllStades">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllStadesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetAllStadesResult" nillable="true" type="q5:ArrayOfSStade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchsOfCoupe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="inCoupe" nillable="true" type="q6:SCoupe" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchsOfCoupeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetMatchsOfCoupeResult" nillable="true" type="q7:ArrayOfSMatch" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUtilisateur">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inLogin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="inPassword" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUtilisateurResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetUtilisateurResult" nillable="true" type="q8:SUtilisateur" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReserverPlaces">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="inMatch" nillable="true" type="q9:SMatch" />
+        <xs:element minOccurs="0" name="inNbPlaces" type="xs:int" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="inSpect" nillable="true" type="q10:SSpectateur" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReserverPlacesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReserverPlacesResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
