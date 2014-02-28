@@ -83,5 +83,44 @@ namespace TestsUnitairesService.cs
             List<SMatch> smatchs = service.GetMatchsOfCoupe(coupe);
             Assert.AreNotEqual(smatchs.Count, 0);
         }
+
+        [TestMethod]
+        public void TestReserverPlace()
+        {
+            ServiceQuidditch service = new ServiceQuidditch();
+
+            List<SMatch> m = service.GetAllMatchs();
+            SMatch match = service.GetAllMatchs()[0];
+            SSpectateur spec = service.GetAllSpectators()[0];
+
+            int nbOld = service.GetAllReservations().Count;
+            int newId = service.ReserverPlaces(match, 4, spec);
+            int nbNew = service.GetAllReservations().Count;
+
+            Assert.IsTrue(nbOld+1 == nbNew);
+        }
+
+        [TestMethod]
+        public void TestAnnulerReservation()
+        {
+            ServiceQuidditch service = new ServiceQuidditch();
+            List<SReservation> res = service.GetAllReservations();
+            int nbOld = res.Count;
+            service.AnnulerReservation(res[0].Id);
+            int nbNew = service.GetAllReservations().Count;
+
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
+        public void TestGetReservation()
+        {
+            ServiceQuidditch service = new ServiceQuidditch();
+            List<SReservation> reservations = service.GetAllReservations();
+
+            SReservation res = service.GetReservationById(reservations[0].Id);
+
+            Assert.IsNotNull(res);
+        }
     }
 }

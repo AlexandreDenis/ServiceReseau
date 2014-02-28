@@ -14,6 +14,21 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="CheckUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inLogin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="inPasswd" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetAllCoupes">
     <xs:complexType>
       <xs:sequence />
@@ -91,6 +106,98 @@
       <xs:sequence>
         <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetUtilisateurResult" nillable="true" type="q8:SUtilisateur" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReserverPlaces">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="inMatch" nillable="true" type="q9:SMatch" />
+        <xs:element minOccurs="0" name="inNbPlaces" type="xs:int" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="inSpect" nillable="true" type="q10:SSpectateur" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReserverPlacesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReserverPlacesResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSpectateurById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inIdSpec" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSpectateurByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetSpectateurByIdResult" nillable="true" type="q11:SSpectateur" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inIdMatch" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetMatchByIdResult" nillable="true" type="q12:SMatch" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMatchs">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMatchsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetAllMatchsResult" nillable="true" type="q13:ArrayOfSMatch" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSpectators">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSpectatorsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetAllSpectatorsResult" nillable="true" type="q14:ArrayOfSSpectateur" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllReservations">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllReservationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/QuidditchService" minOccurs="0" name="GetAllReservationsResult" nillable="true" type="q15:ArrayOfSReservation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnnulerReservation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inIdReservation" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnnulerReservationResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

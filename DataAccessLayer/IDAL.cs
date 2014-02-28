@@ -14,6 +14,7 @@ namespace DataAccessLayer
         List<Equipe> GetAllEquipes();
         List<Stade> GetAllStades();
         List<Match> GetAllMatchs();
+        List<Spectateur> GetAllSpectators();
         List<Utilisateur> GetAllUtilisateurs();
         List<Reservation> GetAllReservations();
         Coupe GetCoupeById(int inId);
@@ -25,5 +26,11 @@ namespace DataAccessLayer
         void UpdateMatch(int inId, int inCoupeID, DateTime inDate, Equipe inDom, Equipe inVisiteur, double inPrix, int inSED, int inSEV, Stade inStade);
         List<Joueur> GetJoueursOfEquipe(int inEquipeId);
         List<Match> GetMatchsOfCoupe(int inCoupeId);
+
+        int ReserverPlace(Match inMatch, int inNbPlaces, Spectateur inSpect);
+        Match GetMatchById(int inMatchId);
+        Spectateur GetSpectateurById(int inSpectId);
+        void AnnulerReservation(int inIdReservation);
+        Reservation GetReservationById(int inIdReservation);
     }
 }

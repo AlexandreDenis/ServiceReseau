@@ -106,6 +106,12 @@ namespace DataAccessLayer
             return DataAccessLayer.GetAllMatchs();
         }
 
+        public List<Spectateur> GetAllSpectators()
+        {
+            return DataAccessLayer.GetAllSpectators();
+        }
+
+
         /// <summary>
         /// Renvoie tous les utilisateurs du programme
         /// </summary>
@@ -209,6 +215,31 @@ namespace DataAccessLayer
         public void CreateUser(string inLogin, string inPassword)
         {
             DataAccessLayer.CreateUser(inLogin, inPassword);
+        }
+
+        public int ReserverPlace(Match inMatch, int inNbPlaces, Spectateur inSpect)
+        {
+            return DataAccessLayer.ReserverPlace(inMatch, inNbPlaces, inSpect);
+        }
+
+        public Match GetMatchById(int inIdMatch)
+        {
+            return DataAccessLayer.GetMatchById(inIdMatch);
+        }
+
+        public Spectateur GetSpectateurById(int inIdSpec)
+        {
+            return DataAccessLayer.GetSpectateurById(inIdSpec);
+        }
+
+        public void AnnulerReservation(int inIdReservation)
+        {
+            DataAccessLayer.AnnulerReservation(inIdReservation);
+        }
+
+        public Reservation GetReservationById(int inIdReservation)
+        {
+            return DataAccessLayer.GetReservationById(inIdReservation);
         }
     
     }

@@ -21,6 +21,12 @@ namespace TestsUnitairesService.cs.ServiceReferenceQuidditch {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/CreateUser", ReplyAction="http://tempuri.org/IServiceQuidditch/CreateUserResponse")]
         System.Threading.Tasks.Task CreateUserAsync(string inLogin, string inPasswd);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/CheckUser", ReplyAction="http://tempuri.org/IServiceQuidditch/CheckUserResponse")]
+        bool CheckUser(string inLogin, string inPasswd);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/CheckUser", ReplyAction="http://tempuri.org/IServiceQuidditch/CheckUserResponse")]
+        System.Threading.Tasks.Task<bool> CheckUserAsync(string inLogin, string inPasswd);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetAllCoupes", ReplyAction="http://tempuri.org/IServiceQuidditch/GetAllCoupesResponse")]
         QuidditchService.SCoupe[] GetAllCoupes();
         
@@ -56,6 +62,48 @@ namespace TestsUnitairesService.cs.ServiceReferenceQuidditch {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetUtilisateur", ReplyAction="http://tempuri.org/IServiceQuidditch/GetUtilisateurResponse")]
         System.Threading.Tasks.Task<QuidditchService.SUtilisateur> GetUtilisateurAsync(string inLogin, string inPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/ReserverPlaces", ReplyAction="http://tempuri.org/IServiceQuidditch/ReserverPlacesResponse")]
+        int ReserverPlaces(QuidditchService.SMatch inMatch, int inNbPlaces, QuidditchService.SSpectateur inSpect);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/ReserverPlaces", ReplyAction="http://tempuri.org/IServiceQuidditch/ReserverPlacesResponse")]
+        System.Threading.Tasks.Task<int> ReserverPlacesAsync(QuidditchService.SMatch inMatch, int inNbPlaces, QuidditchService.SSpectateur inSpect);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetSpectateurById", ReplyAction="http://tempuri.org/IServiceQuidditch/GetSpectateurByIdResponse")]
+        QuidditchService.SSpectateur GetSpectateurById(int inIdSpec);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetSpectateurById", ReplyAction="http://tempuri.org/IServiceQuidditch/GetSpectateurByIdResponse")]
+        System.Threading.Tasks.Task<QuidditchService.SSpectateur> GetSpectateurByIdAsync(int inIdSpec);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetMatchById", ReplyAction="http://tempuri.org/IServiceQuidditch/GetMatchByIdResponse")]
+        QuidditchService.SMatch GetMatchById(int inIdMatch);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetMatchById", ReplyAction="http://tempuri.org/IServiceQuidditch/GetMatchByIdResponse")]
+        System.Threading.Tasks.Task<QuidditchService.SMatch> GetMatchByIdAsync(int inIdMatch);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetAllMatchs", ReplyAction="http://tempuri.org/IServiceQuidditch/GetAllMatchsResponse")]
+        QuidditchService.SMatch[] GetAllMatchs();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetAllMatchs", ReplyAction="http://tempuri.org/IServiceQuidditch/GetAllMatchsResponse")]
+        System.Threading.Tasks.Task<QuidditchService.SMatch[]> GetAllMatchsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetAllSpectators", ReplyAction="http://tempuri.org/IServiceQuidditch/GetAllSpectatorsResponse")]
+        QuidditchService.SSpectateur[] GetAllSpectators();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetAllSpectators", ReplyAction="http://tempuri.org/IServiceQuidditch/GetAllSpectatorsResponse")]
+        System.Threading.Tasks.Task<QuidditchService.SSpectateur[]> GetAllSpectatorsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetAllReservations", ReplyAction="http://tempuri.org/IServiceQuidditch/GetAllReservationsResponse")]
+        QuidditchService.SReservation[] GetAllReservations();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/GetAllReservations", ReplyAction="http://tempuri.org/IServiceQuidditch/GetAllReservationsResponse")]
+        System.Threading.Tasks.Task<QuidditchService.SReservation[]> GetAllReservationsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/AnnulerReservation", ReplyAction="http://tempuri.org/IServiceQuidditch/AnnulerReservationResponse")]
+        void AnnulerReservation(int inIdReservation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceQuidditch/AnnulerReservation", ReplyAction="http://tempuri.org/IServiceQuidditch/AnnulerReservationResponse")]
+        System.Threading.Tasks.Task AnnulerReservationAsync(int inIdReservation);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -91,6 +139,14 @@ namespace TestsUnitairesService.cs.ServiceReferenceQuidditch {
         
         public System.Threading.Tasks.Task CreateUserAsync(string inLogin, string inPasswd) {
             return base.Channel.CreateUserAsync(inLogin, inPasswd);
+        }
+        
+        public bool CheckUser(string inLogin, string inPasswd) {
+            return base.Channel.CheckUser(inLogin, inPasswd);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckUserAsync(string inLogin, string inPasswd) {
+            return base.Channel.CheckUserAsync(inLogin, inPasswd);
         }
         
         public QuidditchService.SCoupe[] GetAllCoupes() {
@@ -139,6 +195,62 @@ namespace TestsUnitairesService.cs.ServiceReferenceQuidditch {
         
         public System.Threading.Tasks.Task<QuidditchService.SUtilisateur> GetUtilisateurAsync(string inLogin, string inPassword) {
             return base.Channel.GetUtilisateurAsync(inLogin, inPassword);
+        }
+        
+        public int ReserverPlaces(QuidditchService.SMatch inMatch, int inNbPlaces, QuidditchService.SSpectateur inSpect) {
+            return base.Channel.ReserverPlaces(inMatch, inNbPlaces, inSpect);
+        }
+        
+        public System.Threading.Tasks.Task<int> ReserverPlacesAsync(QuidditchService.SMatch inMatch, int inNbPlaces, QuidditchService.SSpectateur inSpect) {
+            return base.Channel.ReserverPlacesAsync(inMatch, inNbPlaces, inSpect);
+        }
+        
+        public QuidditchService.SSpectateur GetSpectateurById(int inIdSpec) {
+            return base.Channel.GetSpectateurById(inIdSpec);
+        }
+        
+        public System.Threading.Tasks.Task<QuidditchService.SSpectateur> GetSpectateurByIdAsync(int inIdSpec) {
+            return base.Channel.GetSpectateurByIdAsync(inIdSpec);
+        }
+        
+        public QuidditchService.SMatch GetMatchById(int inIdMatch) {
+            return base.Channel.GetMatchById(inIdMatch);
+        }
+        
+        public System.Threading.Tasks.Task<QuidditchService.SMatch> GetMatchByIdAsync(int inIdMatch) {
+            return base.Channel.GetMatchByIdAsync(inIdMatch);
+        }
+        
+        public QuidditchService.SMatch[] GetAllMatchs() {
+            return base.Channel.GetAllMatchs();
+        }
+        
+        public System.Threading.Tasks.Task<QuidditchService.SMatch[]> GetAllMatchsAsync() {
+            return base.Channel.GetAllMatchsAsync();
+        }
+        
+        public QuidditchService.SSpectateur[] GetAllSpectators() {
+            return base.Channel.GetAllSpectators();
+        }
+        
+        public System.Threading.Tasks.Task<QuidditchService.SSpectateur[]> GetAllSpectatorsAsync() {
+            return base.Channel.GetAllSpectatorsAsync();
+        }
+        
+        public QuidditchService.SReservation[] GetAllReservations() {
+            return base.Channel.GetAllReservations();
+        }
+        
+        public System.Threading.Tasks.Task<QuidditchService.SReservation[]> GetAllReservationsAsync() {
+            return base.Channel.GetAllReservationsAsync();
+        }
+        
+        public void AnnulerReservation(int inIdReservation) {
+            base.Channel.AnnulerReservation(inIdReservation);
+        }
+        
+        public System.Threading.Tasks.Task AnnulerReservationAsync(int inIdReservation) {
+            return base.Channel.AnnulerReservationAsync(inIdReservation);
         }
     }
 }
