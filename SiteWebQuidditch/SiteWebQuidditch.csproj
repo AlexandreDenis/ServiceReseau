@@ -67,6 +67,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="index.aspx" />
+    <Content Include="Javascripts\jquery-1.11.0.js" />
     <Content Include="Javascripts\matchs.js" />
     <Content Include="Javascripts\reservation.js" />
     <Content Include="matchs.aspx" />
@@ -159,7 +160,12 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReferenceQuidditch\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\QuidditchService\QuidditchService.csproj">
+      <Project>{258d9443-786d-41f6-a13a-76e7c4cef5c5}</Project>
+      <Name>QuidditchService</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

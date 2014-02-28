@@ -2,8 +2,6 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="" title="Menu"  description="Menu">
     <siteMapNode url="index.aspx" title="Accueil"  description="Page d'accueil"/>
-    <siteMapNode url="coupes.aspx" title="Coupes"  description="Gestion des coupes"/>
-    <siteMapNode url="equipes.aspx" title="Equipes"  description="Gestion des équipes"/>
     <siteMapNode url="matchs.aspx" title="Matchs"  description="Gestion des matchs"/>
     <siteMapNode url="reservation.aspx" title="Réservation"  description="Gestion des réservations"/>
   </siteMapNode>
