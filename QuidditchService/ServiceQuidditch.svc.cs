@@ -26,6 +26,11 @@ namespace QuidditchService
             _manager.CreateUser(inLogin, inPasswd);
         }
 
+        public bool CheckUser(string inLogin, string inPasswd)
+        {
+            return _manager.CheckConnexionUser(inLogin, inPasswd);
+        }
+
         public List<SCoupe> GetAllCoupes()
         {
             List<Coupe> coupes = _manager.GetCoupes();

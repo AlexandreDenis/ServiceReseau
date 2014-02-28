@@ -17,6 +17,9 @@ namespace QuidditchService
         void CreateUser(string inLogin, string inPasswd);
 
         [OperationContract]
+        bool CheckUser(string inLogin, string inPasswd);
+
+        [OperationContract]
         List<SCoupe> GetAllCoupes();
 
         [OperationContract]
