@@ -178,7 +178,7 @@ namespace BusinessLayer
         /// <param name="inLogin">Login à vérifier</param>
         /// <param name="inPassword">Mot de passe à vérifier</param>
         /// <returns>Booléen -> true si le mot de passe correspond bien au login entré, false sinon</returns>
-        public bool checkConnexionUser(string inLogin, string inPassword)
+        public bool CheckConnexionUser(string inLogin, string inPassword)
         {
             bool res = false;
             Utilisateur user = GetUser(inLogin,inPassword);

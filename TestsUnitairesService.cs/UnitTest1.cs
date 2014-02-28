@@ -28,6 +28,17 @@ namespace TestsUnitairesService.cs
         }
 
         [TestMethod]
+        public void TestCheckUser()
+        {
+            string login = "toto";
+            string passwd = "toto";
+
+            ServiceQuidditch service = new ServiceQuidditch();
+
+            Assert.IsTrue(service.CheckUser(login,passwd));
+        }
+
+        [TestMethod]
         public void TestGetCoupes()
         {
             ServiceQuidditch service = new ServiceQuidditch();
