@@ -13,8 +13,8 @@ namespace TestsUnitairesService.cs
         [TestMethod]
         public void TestCreateUser()
         {
-            string login = "alfddec";
-            string passwd = "dednfdis";
+            string login = "alfddedfcaa";
+            string passwd = "dednfdffdiaas";
 
             ServiceQuidditch service = new ServiceQuidditch();
 
@@ -82,6 +82,44 @@ namespace TestsUnitairesService.cs
 
             List<SMatch> smatchs = service.GetMatchsOfCoupe(coupe);
             Assert.AreNotEqual(smatchs.Count, 0);
+        }
+
+        [TestMethod]
+        public void TestReserverPlace()
+        {
+            ServiceQuidditch service = new ServiceQuidditch();
+       
+            SMatch match = service.GetAllMatchs()[0];
+            SSpectateur spec = service.GetAllSpectators()[0];
+
+            int nbOld = service.GetAllReservations().Count;
+            int newId = service.ReserverPlaces(match.Id, 4, spec.Id);
+            int nbNew = service.GetAllReservations().Count;
+
+            Assert.IsTrue(nbOld + 1 == nbNew);
+        }
+
+        [TestMethod]
+        public void TestAnnulerReservation()
+        {
+            ServiceQuidditch service = new ServiceQuidditch();
+            List<SReservation> res = service.GetAllReservations();
+            int nbOld = res.Count;
+            service.AnnulerReservation(res[0].Id);
+            int nbNew = service.GetAllReservations().Count;
+
+            Assert.IsTrue(nbOld-1 == nbNew);
+        }
+
+        [TestMethod]
+        public void TestGetReservation()
+        {
+            ServiceQuidditch service = new ServiceQuidditch();
+            List<SReservation> reservations = service.GetAllReservations();
+
+            SReservation res = service.GetReservationById(reservations[0].Id);
+
+            Assert.IsNotNull(res);
         }
     }
 }

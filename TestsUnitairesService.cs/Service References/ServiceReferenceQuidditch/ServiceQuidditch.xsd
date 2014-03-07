@@ -94,4 +94,24 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="SSpectateur" nillable="true" type="tns:SSpectateur" />
+  <xs:complexType name="ArrayOfSSpectateur">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SSpectateur" nillable="true" type="tns:SSpectateur" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSSpectateur" nillable="true" type="tns:ArrayOfSSpectateur" />
+  <xs:complexType name="ArrayOfSReservation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SReservation" nillable="true" type="tns:SReservation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSReservation" nillable="true" type="tns:ArrayOfSReservation" />
+  <xs:complexType name="SReservation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SEntityObject">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SReservation" nillable="true" type="tns:SReservation" />
 </xs:schema>

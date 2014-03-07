@@ -51,9 +51,9 @@ namespace QuidditchService
         /// <param name="inSpect">Id du spectateur effectuant cette nouvelle réservation</param>
         public SReservation(Reservation inReserv) : base(inReserv.Id)
         {
+            this.SpectateurId = inReserv.Spectateur.Id;
             this.MatchId = inReserv.Match.Id;
             this.NombrePlacesReservees = inReserv.NombrePlacesReservees;
-            this.SpectateurId = inReserv.Spectateur.Id;
         }
     }
 }

@@ -175,7 +175,7 @@ namespace DataAccessLayer
             int inVisiteurID;
             int inSED;
             int inSEV; 
-
+            
             foreach (DataRow row in dataTable.Rows)
             {
                 inId = (int)row[dataTable.Columns[0].ColumnName];
@@ -186,15 +186,44 @@ namespace DataAccessLayer
                 inSED = (int)row[dataTable.Columns[6].ColumnName];
                 inSEV = (int)row[dataTable.Columns[7].ColumnName];
                 inDate = (DateTime)row[dataTable.Columns[8].ColumnName];
-
-                /*Récupération des Entities selon les Ids récupérés*/
+                
+                //Récupération des Entities selon les Ids récupérés
                 inStade = getStadeById(inStadeID);
                 inDom = getEquipeById(inDomID);
                 inVisiteur = getEquipeById(inVisiteurID);
-
+                
                 result.Add(new Match(inId, inCoupeID, (DateTime)inDate, inDom, inVisiteur, 50.0, inSED, inSEV, inStade));
+                
             }
             
+            return result;
+        }
+
+        public List<Spectateur> GetAllSpectators()
+        {
+            List<Spectateur> result = new List<Spectateur>();
+            string request = "select * from Spectateurs;";
+            DataTable dataTable = SelectByAdapter(request);
+            int inId;
+            string inPrenom;
+            string inNom;
+            DateTime inDate;
+            string inAdresse;
+            string inMail;
+            
+            foreach (DataRow row in dataTable.Rows)
+            {
+                
+                inId = (int)row[dataTable.Columns[0].ColumnName];
+                inPrenom = row[dataTable.Columns[1].ColumnName].ToString();
+                inNom = row[dataTable.Columns[2].ColumnName].ToString();
+                inDate = (DateTime)row[dataTable.Columns[3].ColumnName];
+                inAdresse = row[dataTable.Columns[4].ColumnName].ToString();
+                inMail = row[dataTable.Columns[5].ColumnName].ToString();
+
+                result.Add(new Spectateur(inId,inNom,inPrenom,inDate,inAdresse,inMail));
+            }
+
             return result;
         }
 
@@ -298,7 +327,6 @@ namespace DataAccessLayer
             Spectateur inSpect;
             int inSpectId;
             int inMatchId;
-
             foreach (DataRow row in dataTable.Rows)
             {
                 inId = (int)row[dataTable.Columns[0].ColumnName];
@@ -306,9 +334,9 @@ namespace DataAccessLayer
                 inMatchId = (int)row[dataTable.Columns[2].ColumnName];
                 inNPR = (int)row[dataTable.Columns[3].ColumnName];
 
-                /*Récupération des Entities selon les Ids récupérés*/
-                inSpect = getSpectateurById(inSpectId);
-                inMatch = getMatchById(inMatchId);
+                //Récupération des Entities selon les Ids récupérés
+                inSpect = GetSpectateurById(inSpectId);
+                inMatch = GetMatchById(inMatchId);
 
                 result.Add(new Reservation(inId,inMatch,inNPR,inSpect));
             }
@@ -321,7 +349,7 @@ namespace DataAccessLayer
         /// </summary>
         /// <param name="inId">Id du match à rechercher</param>
         /// <returns>Une instance de match ou null</returns>
-        private Match getMatchById(int inMatchId)
+        public Match GetMatchById(int inMatchId)
         {
             string request = "select * from Matchs where ID = " + inMatchId + ";";
             DataTable dataTable = SelectByAdapter(request);
@@ -356,7 +384,7 @@ namespace DataAccessLayer
                 inDom = getEquipeById(inDomID);
                 inVisiteur = getEquipeById(inVisiteurID);
 
-                result = new Match(inId, inCoupeID, (DateTime)inDate, inDom, inVisiteur, 50.0, inSED, inSEV, inStade);
+                result = new Match(inId, inCoupeID, inDate, inDom, inVisiteur, 50.0, inSED, inSEV, inStade);
             }
 
             return result;
@@ -367,7 +395,7 @@ namespace DataAccessLayer
         /// </summary>
         /// <param name="inId">Id du spectateur à rechercher</param>
         /// <returns>Une instance de spectateur ou null</returns>
-        private Spectateur getSpectateurById(int inSpectId)
+        public Spectateur GetSpectateurById(int inSpectId)
         {
             string request = "select * from Spectateurs where ID = " + inSpectId + ";";
             DataTable dataTable = SelectByAdapter(request);
@@ -668,6 +696,72 @@ namespace DataAccessLayer
 
             dataTable.Rows.Add(null,inLogin, stringHashData.ToString());
             UpdateByCommandBuilder("select * from Utilisateur;", dataTable);
+        }
+
+        public int ReserverPlace(int inMatchId, int inNbPlaces, int inSpectId)
+        {
+            DataTable dataTable = SelectByAdapter("select * from Reservations;");
+
+            dataTable.Rows.Add(null, inSpectId, inMatchId,inNbPlaces,null);
+            UpdateByCommandBuilder("select * from Reservations;", dataTable);
+
+            return LastInsertedReservId();
+        }
+
+        private int LastInsertedReservId()
+        {
+            List<Reservation> reservations = GetAllReservations();
+
+            int totalReserv = reservations.Count();
+
+            return reservations[totalReserv-1].Id;
+        }
+
+        public void AnnulerReservation(int inIdReservation)
+        {
+            DataTable dataTable = SelectByAdapter("select * from Reservations;");
+            int id;
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                id = (int)row[dataTable.Columns[0].ColumnName];
+
+                if (id == inIdReservation)
+                    row.Delete();
+            }
+
+            UpdateByCommandBuilder("select * from Reservations;", dataTable);
+        }
+
+        public Reservation GetReservationById(int inIdReservation)
+        {
+            string request = "select * from Reservations where ID = "+inIdReservation+";";
+            DataTable dataTable = SelectByAdapter(request);
+            Reservation result = null;
+            int inId;
+            Match inMatch;
+            int inNPR;
+            Spectateur inSpect;
+            int inSpectId;
+            int inMatchId;
+
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+
+                inId = (int)row[dataTable.Columns[0].ColumnName];
+                inSpectId = (int)row[dataTable.Columns[1].ColumnName];
+                inMatchId = (int)row[dataTable.Columns[2].ColumnName];
+                inNPR = (int)row[dataTable.Columns[3].ColumnName];
+
+                /*Récupération des Entities selon les Ids récupérés*/
+                inSpect = GetSpectateurById(inSpectId);
+                inMatch = GetMatchById(inMatchId);
+
+                result = new Reservation(inId, inMatch, inNPR, inSpect);
+            }
+
+            return result;
         }
     }
 }

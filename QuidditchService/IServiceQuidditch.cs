@@ -38,6 +38,27 @@ namespace QuidditchService
         SUtilisateur GetUtilisateur(string inLogin, string inPassword);
 
         [OperationContract]
-        int ReserverPlaces(SMatch inMatch, int inNbPlaces, SSpectateur inSpect);
+        int ReserverPlaces(int inMatchId, int inNbPlaces, int inSpectId);
+
+        [OperationContract]
+        SSpectateur GetSpectateurById(int inIdSpec);
+
+        [OperationContract]
+        SMatch GetMatchById(int inIdMatch);
+
+        [OperationContract]
+        List<SMatch> GetAllMatchs();
+
+        [OperationContract]
+        List<SSpectateur> GetAllSpectators();
+
+        [OperationContract]
+        List<SReservation> GetAllReservations();
+
+        [OperationContract]
+        void AnnulerReservation(int inIdReservation);
+
+        [OperationContract]
+        SReservation GetReservationById(int inIdReservation);
     }
 }

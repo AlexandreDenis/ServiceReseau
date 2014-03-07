@@ -68,6 +68,11 @@ namespace BusinessLayer
             return _manager.GetAllMatchs();
         }
 
+        public List<Spectateur> GetSpectators()
+        {
+            return _manager.GetAllSpectators();
+        }
+
         /// <summary>
         /// Renvoie l'utilisateur correspondant au login
         /// </summary>
@@ -256,6 +261,31 @@ namespace BusinessLayer
         public void CreateUser(string inLogin, string inPasswd)
         {
             _manager.CreateUser(inLogin, inPasswd);
+        }
+
+        public int ReserverPlace(int inMatchId, int inNbPlaces, int inSpectId)
+        {
+            return _manager.ReserverPlace(inMatchId, inNbPlaces, inSpectId);
+        }
+
+        public Match GetMatchById(int inIdMatch)
+        {
+            return _manager.GetMatchById(inIdMatch);
+        }
+
+        public Spectateur GetSpectateurById(int inSpectId)
+        {
+            return _manager.GetSpectateurById(inSpectId);
+        }
+
+        public void AnnulerReservation(int inIdReservation)
+        {
+            _manager.AnnulerReservation(inIdReservation);
+        }
+
+        public Reservation GetReservationById(int inIdReservation)
+        {
+            return _manager.GetReservationById(inIdReservation);
         }
     }
 }

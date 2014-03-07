@@ -13,6 +13,12 @@
   <wsdl:message name="IServiceQuidditch_CreateUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_CheckUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUser" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_CheckUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceQuidditch_GetAllCoupes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCoupes" />
   </wsdl:message>
@@ -55,10 +61,50 @@
   <wsdl:message name="IServiceQuidditch_ReserverPlaces_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReserverPlacesResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetSpectateurById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpectateurById" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetSpectateurById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpectateurByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetMatchById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMatchById" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetMatchById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMatchByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetAllMatchs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMatchs" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetAllMatchs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMatchsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetAllSpectators_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSpectators" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetAllSpectators_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSpectatorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetAllReservations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReservations" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_GetAllReservations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReservationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_AnnulerReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AnnulerReservation" />
+  </wsdl:message>
+  <wsdl:message name="IServiceQuidditch_AnnulerReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AnnulerReservationResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceQuidditch">
     <wsdl:operation name="CreateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/CreateUser" message="tns:IServiceQuidditch_CreateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/CreateUserResponse" message="tns:IServiceQuidditch_CreateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/CheckUser" message="tns:IServiceQuidditch_CheckUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/CheckUserResponse" message="tns:IServiceQuidditch_CheckUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllCoupes">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllCoupes" message="tns:IServiceQuidditch_GetAllCoupes_InputMessage" />
@@ -88,11 +134,44 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/ReserverPlaces" message="tns:IServiceQuidditch_ReserverPlaces_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/ReserverPlacesResponse" message="tns:IServiceQuidditch_ReserverPlaces_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetSpectateurById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetSpectateurById" message="tns:IServiceQuidditch_GetSpectateurById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetSpectateurByIdResponse" message="tns:IServiceQuidditch_GetSpectateurById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetMatchById" message="tns:IServiceQuidditch_GetMatchById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetMatchByIdResponse" message="tns:IServiceQuidditch_GetMatchById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMatchs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllMatchs" message="tns:IServiceQuidditch_GetAllMatchs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllMatchsResponse" message="tns:IServiceQuidditch_GetAllMatchs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSpectators">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllSpectators" message="tns:IServiceQuidditch_GetAllSpectators_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllSpectatorsResponse" message="tns:IServiceQuidditch_GetAllSpectators_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReservations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllReservations" message="tns:IServiceQuidditch_GetAllReservations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/GetAllReservationsResponse" message="tns:IServiceQuidditch_GetAllReservations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AnnulerReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceQuidditch/AnnulerReservation" message="tns:IServiceQuidditch_AnnulerReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceQuidditch/AnnulerReservationResponse" message="tns:IServiceQuidditch_AnnulerReservation_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceQuidditch" type="tns:IServiceQuidditch">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="CreateUser">
       <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/CheckUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -156,6 +235,60 @@
     </wsdl:operation>
     <wsdl:operation name="ReserverPlaces">
       <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/ReserverPlaces" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpectateurById">
+      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetSpectateurById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchById">
+      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetMatchById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMatchs">
+      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetAllMatchs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSpectators">
+      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetAllSpectators" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReservations">
+      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/GetAllReservations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnnulerReservation">
+      <soap:operation soapAction="http://tempuri.org/IServiceQuidditch/AnnulerReservation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

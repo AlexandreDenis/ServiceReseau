@@ -109,10 +109,73 @@ namespace QuidditchService
             return suser;
         }
 
-        public int ReserverPlaces(SMatch inMatch, int inNbPlaces, SSpectateur inSpect)
+        public SMatch GetMatchById(int inIdMatch)
         {
-            //TODO
-            return 0;
+            return new SMatch(_manager.GetMatchById(inIdMatch));
+        }
+
+        public SSpectateur GetSpectateurById(int inIdSpec)
+        {
+            return new SSpectateur(_manager.GetSpectateurById(inIdSpec));
+        }
+
+        public int ReserverPlaces(int inMatchId, int inNbPlaces, int inSpectId)
+        {
+            return _manager.ReserverPlace(inMatchId, inNbPlaces, inSpectId);
+        }
+
+        public List<SMatch> GetAllMatchs()
+        {
+            List<Match> matchs = _manager.GetMatchs();
+            List<SMatch> smatchs = new List<SMatch>();
+
+            foreach (Match mat in matchs)
+            {
+                smatchs.Add(new SMatch(mat));
+            }
+
+            return smatchs;
+        }
+
+        public List<SSpectateur> GetAllSpectators()
+        {
+            List<Spectateur> spectateurs = _manager.GetSpectators();
+            List<SSpectateur> sspectateurs = new List<SSpectateur>();
+
+            foreach (Spectateur spe in spectateurs)
+            {
+                sspectateurs.Add(new SSpectateur(spe));
+            }
+
+            return sspectateurs;
+        }
+
+        public List<SReservation> GetAllReservations()
+        {
+            List<Reservation> reservations = _manager.GetReservations();
+            List<SReservation> sreservations = new List<SReservation>();
+
+            foreach (Reservation res in reservations)
+            {
+                sreservations.Add(new SReservation(res));
+            }
+
+            return sreservations;
+        }
+
+        public void AnnulerReservation(int inIdReservation)
+        {
+            _manager.AnnulerReservation(inIdReservation);
+        }
+
+        public SReservation GetReservationById(int inIdReservation)
+        {
+            Reservation res = _manager.GetReservationById(inIdReservation);
+            SReservation sres = null;
+            if(res != null)
+                sres = new SReservation(res);
+
+            return sres;
         }
     }
 }
