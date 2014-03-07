@@ -327,7 +327,6 @@ namespace DataAccessLayer
             Spectateur inSpect;
             int inSpectId;
             int inMatchId;
-
             foreach (DataRow row in dataTable.Rows)
             {
                 inId = (int)row[dataTable.Columns[0].ColumnName];
@@ -335,7 +334,7 @@ namespace DataAccessLayer
                 inMatchId = (int)row[dataTable.Columns[2].ColumnName];
                 inNPR = (int)row[dataTable.Columns[3].ColumnName];
 
-                /*Récupération des Entities selon les Ids récupérés*/
+                //Récupération des Entities selon les Ids récupérés
                 inSpect = GetSpectateurById(inSpectId);
                 inMatch = GetMatchById(inMatchId);
 
@@ -385,7 +384,7 @@ namespace DataAccessLayer
                 inDom = getEquipeById(inDomID);
                 inVisiteur = getEquipeById(inVisiteurID);
 
-                //result = new Match(inId, inCoupeID, inDate, inDom, inVisiteur, 50.0, inSED, inSEV, inStade);
+                result = new Match(inId, inCoupeID, inDate, inDom, inVisiteur, 50.0, inSED, inSEV, inStade);
             }
 
             return result;
@@ -699,11 +698,11 @@ namespace DataAccessLayer
             UpdateByCommandBuilder("select * from Utilisateur;", dataTable);
         }
 
-        public int ReserverPlace(Match inMatch, int inNbPlaces, Spectateur inSpect)
+        public int ReserverPlace(int inMatchId, int inNbPlaces, int inSpectId)
         {
             DataTable dataTable = SelectByAdapter("select * from Reservations;");
 
-            dataTable.Rows.Add(null, inSpect.Id, inMatch.Id,inNbPlaces,null);
+            dataTable.Rows.Add(null, inSpectId, inMatchId,inNbPlaces,"0");
             UpdateByCommandBuilder("select * from Utilisateur;", dataTable);
 
             return LastInsertedId();

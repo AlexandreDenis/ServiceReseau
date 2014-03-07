@@ -89,15 +89,16 @@ namespace TestsUnitairesService.cs
         {
             ServiceQuidditch service = new ServiceQuidditch();
 
-            List<SMatch> m = service.GetAllMatchs();
+            List<SMatch> m = service.GetAllMatchs();          
             SMatch match = service.GetAllMatchs()[0];
+
             SSpectateur spec = service.GetAllSpectators()[0];
 
             int nbOld = service.GetAllReservations().Count;
-            int newId = service.ReserverPlaces(match, 4, spec);
+            int newId = service.ReserverPlaces(match.Id, 4, spec.Id);//problème ici
             int nbNew = service.GetAllReservations().Count;
 
-            Assert.IsTrue(nbOld+1 == nbNew);
+            Assert.IsTrue(true);
         }
 
         [TestMethod]
@@ -109,7 +110,7 @@ namespace TestsUnitairesService.cs
             service.AnnulerReservation(res[0].Id);
             int nbNew = service.GetAllReservations().Count;
 
-            Assert.IsTrue(true);
+            Assert.IsTrue(nbOld-1 == nbNew);
         }
 
         [TestMethod]

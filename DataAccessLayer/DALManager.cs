@@ -217,9 +217,9 @@ namespace DataAccessLayer
             DataAccessLayer.CreateUser(inLogin, inPassword);
         }
 
-        public int ReserverPlace(Match inMatch, int inNbPlaces, Spectateur inSpect)
+        public int ReserverPlace(int inMatchId, int inNbPlaces, int inSpectId)
         {
-            return DataAccessLayer.ReserverPlace(inMatch, inNbPlaces, inSpect);
+            return DataAccessLayer.ReserverPlace(inMatchId, inNbPlaces, inSpectId);
         }
 
         public Match GetMatchById(int inIdMatch)

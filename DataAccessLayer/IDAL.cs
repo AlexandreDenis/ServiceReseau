@@ -27,7 +27,7 @@ namespace DataAccessLayer
         List<Joueur> GetJoueursOfEquipe(int inEquipeId);
         List<Match> GetMatchsOfCoupe(int inCoupeId);
 
-        int ReserverPlace(Match inMatch, int inNbPlaces, Spectateur inSpect);
+        int ReserverPlace(int inMatchId, int inNbPlaces, int inSpectId);
         Match GetMatchById(int inMatchId);
         Spectateur GetSpectateurById(int inSpectId);
         void AnnulerReservation(int inIdReservation);

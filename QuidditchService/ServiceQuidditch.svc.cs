@@ -119,12 +119,9 @@ namespace QuidditchService
             return new SSpectateur(_manager.GetSpectateurById(inIdSpec));
         }
 
-        public int ReserverPlaces(SMatch inMatch, int inNbPlaces, SSpectateur inSpect)
+        public int ReserverPlaces(int inMatchId, int inNbPlaces, int inSpectId)
         {
-            Match m = _manager.GetMatchById(inMatch.Id);
-            Spectateur s = _manager.GetSpectateurById(inSpect.Id);
-            
-            return _manager.ReserverPlace(m, inNbPlaces, s);
+            return _manager.ReserverPlace(inMatchId, inNbPlaces, inSpectId);
         }
 
         public List<SMatch> GetAllMatchs()

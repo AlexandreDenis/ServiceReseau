@@ -263,9 +263,9 @@ namespace BusinessLayer
             _manager.CreateUser(inLogin, inPasswd);
         }
 
-        public int ReserverPlace(Match inMatch, int inNbPlaces, Spectateur inSpect)
+        public int ReserverPlace(int inMatchId, int inNbPlaces, int inSpectId)
         {
-            return _manager.ReserverPlace(inMatch, inNbPlaces, inSpect);
+            return _manager.ReserverPlace(inMatchId, inNbPlaces, inSpectId);
         }
 
         public Match GetMatchById(int inIdMatch)
