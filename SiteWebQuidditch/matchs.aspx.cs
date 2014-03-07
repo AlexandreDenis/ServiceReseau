@@ -15,7 +15,7 @@ namespace SiteWebQuidditch
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         [WebMethod]
@@ -27,6 +27,13 @@ namespace SiteWebQuidditch
             SCoupe coupe = service.GetAllCoupes()[0];
 
             return service.GetMatchsOfCoupe(coupe);
+        }
+
+        [WebMethod]
+        [ScriptMethod]
+        public static void SetReservations(List<int> inListId)
+        {
+            HttpContext.Current.Session["ListeMatchsReserves"] = inListId;
         }
     }
 }

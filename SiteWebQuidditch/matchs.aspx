@@ -8,4 +8,5 @@
     <h1 class="Titre">Gestion des matchs</h1>
     <img id="imgWait" src="resources/wait.gif" class="ImgWait" />
     <div id="divMatchs"></div>
+    <button id="reservationButton" type="button">Réserver</button>
 </asp:Content>
