@@ -702,26 +702,19 @@ namespace DataAccessLayer
         {
             DataTable dataTable = SelectByAdapter("select * from Reservations;");
 
-            dataTable.Rows.Add(null, inSpectId, inMatchId,inNbPlaces,"0");
-            UpdateByCommandBuilder("select * from Utilisateur;", dataTable);
+            dataTable.Rows.Add(null, inSpectId, inMatchId,inNbPlaces,null);
+            UpdateByCommandBuilder("select * from Reservations;", dataTable);
 
-            return LastInsertedId();
+            return LastInsertedReservId();
         }
 
-        private int LastInsertedId()
+        private int LastInsertedReservId()
         {
-            DataTable dataTable = SelectByAdapter("SELECT @@IDENTITY;");
+            List<Reservation> reservations = GetAllReservations();
 
-            int lastId = -1;
+            int totalReserv = reservations.Count();
 
-            if (dataTable.Rows.Count > 0)
-            {
-                DataRow row = dataTable.Rows[0];
-
-                lastId = (int)row[dataTable.Columns[0].ColumnName];
-            }
-
-            return lastId;
+            return reservations[totalReserv-1].Id;
         }
 
         public void AnnulerReservation(int inIdReservation)

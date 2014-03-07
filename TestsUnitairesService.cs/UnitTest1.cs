@@ -13,8 +13,8 @@ namespace TestsUnitairesService.cs
         [TestMethod]
         public void TestCreateUser()
         {
-            string login = "alfddec";
-            string passwd = "dednfdis";
+            string login = "alfddedfcaa";
+            string passwd = "dednfdffdiaas";
 
             ServiceQuidditch service = new ServiceQuidditch();
 
@@ -88,17 +88,15 @@ namespace TestsUnitairesService.cs
         public void TestReserverPlace()
         {
             ServiceQuidditch service = new ServiceQuidditch();
-
-            List<SMatch> m = service.GetAllMatchs();          
+       
             SMatch match = service.GetAllMatchs()[0];
-
             SSpectateur spec = service.GetAllSpectators()[0];
 
             int nbOld = service.GetAllReservations().Count;
-            int newId = service.ReserverPlaces(match.Id, 4, spec.Id);//problème ici
+            int newId = service.ReserverPlaces(match.Id, 4, spec.Id);
             int nbNew = service.GetAllReservations().Count;
 
-            Assert.IsTrue(true);
+            Assert.IsTrue(nbOld + 1 == nbNew);
         }
 
         [TestMethod]
