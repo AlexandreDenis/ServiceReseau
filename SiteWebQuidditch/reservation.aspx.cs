@@ -21,12 +21,33 @@ namespace SiteWebQuidditch
         [ScriptMethod]
         public static List<int> GetPanier()
         {
-            ServiceQuidditch service = new ServiceQuidditch();
-
-            //SCoupe coupe = service.GetAllCoupes()[0];
             List<int> listId = (List<int>)HttpContext.Current.Session["ListeMatchsReserves"];
 
             return listId;
+        }
+
+        [WebMethod]
+        [ScriptMethod]
+        public static void CancelReservations(List<int> inListId)
+        {
+           List<int> reservations = (List<int>)HttpContext.Current.Session["ListeMatchsReserves"];
+
+           foreach (int i in inListId)
+            {
+                if (reservations.Contains(i))
+                {
+                    reservations.Remove(i);
+                }
+            }
+
+            HttpContext.Current.Session["ListeMatchsReserves"] = reservations;
+        }
+
+        [WebMethod]
+        [ScriptMethod]
+        public static void ClearPanier()
+        {
+            HttpContext.Current.Session["ListeMatchsReserves"] = null;
         }
     }
 }
