@@ -6,6 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
     <h1 class="Titre">Gestion des matchs</h1>
+    <h3>Veuillez sélectionner les matchs dont vous voulez réserver des places :</h3>
     <img id="imgWait" src="resources/wait.gif" class="ImgWait" />
     <div id="divMatchs"></div>
     <button id="reservationButton" type="button">Réserver</button>
