@@ -212,31 +212,62 @@ namespace DataAccessLayer
             DataAccessLayer.UpdateMatch( inId, inCoupeID, inDate, inDom, inVisiteur, inPrix, inSED, inSEV, inStade);
         }
 
+        /// <summary>
+        /// Création d'un utilisateur dans la base
+        /// </summary>
+        /// <param name="inLogin">Login de ce nouvel utilisateur</param>
+        /// <param name="inPassword">Mot de passe de ce nouvel utilisateur</param>
         public void CreateUser(string inLogin, string inPassword)
         {
             DataAccessLayer.CreateUser(inLogin, inPassword);
         }
 
+        /// <summary>
+        /// Réservation de places dans la base de données
+        /// </summary>
+        /// <param name="inMatchId">Identifiant du match pour lequel effectuer les réservations</param>
+        /// <param name="inNbPlaces">Nombre de places à réserver</param>
+        /// <param name="inSpectId">Identifiant du spectateur qui effectue la réservation</param>
+        /// <returns>Identifiant de la réservation effectuée</returns>
         public int ReserverPlace(int inMatchId, int inNbPlaces, int inSpectId)
         {
             return DataAccessLayer.ReserverPlace(inMatchId, inNbPlaces, inSpectId);
         }
 
+        /// <summary>
+        /// Renvoie le match associé à un Id
+        /// </summary>
+        /// <param name="inId">Id du match à rechercher</param>
+        /// <returns>Une instance de match ou null</returns>
         public Match GetMatchById(int inIdMatch)
         {
             return DataAccessLayer.GetMatchById(inIdMatch);
         }
 
+        /// <summary>
+        /// Renvoie le spectateur associé à un Id
+        /// </summary>
+        /// <param name="inId">Id du spectateur à rechercher</param>
+        /// <returns>Une instance de spectateur ou null</returns>
         public Spectateur GetSpectateurById(int inIdSpec)
         {
             return DataAccessLayer.GetSpectateurById(inIdSpec);
         }
 
+        /// <summary>
+        /// Annulation d'une réservation
+        /// </summary>
+        /// <param name="inIdReservation">Identifiant de la réservation à annuler</param>
         public void AnnulerReservation(int inIdReservation)
         {
             DataAccessLayer.AnnulerReservation(inIdReservation);
         }
 
+        /// <summary>
+        /// Obtention d'une réservation via son identifiant
+        /// </summary>
+        /// <param name="inIdReservation">Identifiant de la réservation recherchée</param>
+        /// <returns>Réservation correspondante</returns>
         public Reservation GetReservationById(int inIdReservation)
         {
             return DataAccessLayer.GetReservationById(inIdReservation);

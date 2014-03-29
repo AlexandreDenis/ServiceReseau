@@ -8,6 +8,9 @@ using System.Runtime.Serialization;
 
 namespace QuidditchService
 {
+    /// <summary>
+    /// Objet Match vu par le web service
+    /// </summary>
     [DataContract]
     public class SMatch : SEntityObject
     {
@@ -92,17 +95,9 @@ namespace QuidditchService
         }
 
         /// <summary>
-        /// Constructeur de la classe Match
+        /// Constructeur de la classe SMatch
         /// </summary>
-        /// <param name="inId">Id du nouveau match</param>
-        /// <param name="inCoupeID">Id de la coupe du nouveau match</param>
-        /// <param name="inDate">Date du nouveau match</param>
-        /// <param name="inDom">Equipe domicile du nouveau match</param>
-        /// <param name="inVisiteur">Equipe visiteur du nouveau match</param>
-        /// <param name="inPrix">Prix du nouveau match</param>
-        /// <param name="inSED">Score de l'équipe domicile du nouveau match</param>
-        /// <param name="inSEV">Score de l'équipe visiteur du nouveau match</param>
-        /// <param name="inStade">Stade du nouveau match</param>
+        /// <param name="inMatch">Match original</param>
         public SMatch(Match inMatch) 
             : base(inMatch.Id)
         {

@@ -8,6 +8,9 @@ using System.Runtime.Serialization;
 
 namespace QuidditchService
 {
+    /// <summary>
+    /// Objet Reservation vu par le web service
+    /// </summary>
     [DataContract]
     public class SReservation : SEntityObject
     {
@@ -43,12 +46,9 @@ namespace QuidditchService
 
 
         /// <summary>
-        /// Constructeur de la classe Reservation
+        /// Constructeur de la classe SReservation
         /// </summary>
-        /// <param name="inId">Id de la nouvelle réservation</param>
-        /// <param name="inMatch">Match correspondant à la nouvelle réservation</param>
-        /// <param name="inNPR">Nombre de places réservées pour cette nouvelle réservation</param>
-        /// <param name="inSpect">Id du spectateur effectuant cette nouvelle réservation</param>
+        /// <param name="inReserv">Réservation originale</param>
         public SReservation(Reservation inReserv) : base(inReserv.Id)
         {
             this.SpectateurId = inReserv.Spectateur.Id;

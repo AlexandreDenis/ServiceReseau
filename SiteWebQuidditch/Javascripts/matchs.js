@@ -13,6 +13,7 @@
 
     }, function (err) { alert('erreur'); });
 
+    //appui sur le bouton de réservation
     $("#reservationButton").click(function () {
         var checked = $('input[type="checkbox"]:checked');
         var listId = new Array();

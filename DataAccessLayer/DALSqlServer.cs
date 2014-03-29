@@ -199,6 +199,10 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Renvoie tous les spectateurs
+        /// </summary>
+        /// <returns>Liste des spectateurs</returns>
         public List<Spectateur> GetAllSpectators()
         {
             List<Spectateur> result = new List<Spectateur>();
@@ -681,6 +685,11 @@ namespace DataAccessLayer
             UpdateByCommandBuilder("select * from Matchs;", dataTable);
         }
 
+        /// <summary>
+        /// Création d'un utilisateur dans la base
+        /// </summary>
+        /// <param name="inLogin">Login de ce nouvel utilisateur</param>
+        /// <param name="inPassword">Mot de passe de ce nouvel utilisateur</param>
         public void CreateUser(string inLogin, string inPassword)
         {
             DataTable dataTable = SelectByAdapter("select * from Utilisateur;");
@@ -698,6 +707,13 @@ namespace DataAccessLayer
             UpdateByCommandBuilder("select * from Utilisateur;", dataTable);
         }
 
+        /// <summary>
+        /// Réservation de places dans la base de données
+        /// </summary>
+        /// <param name="inMatchId">Identifiant du match pour lequel effectuer les réservations</param>
+        /// <param name="inNbPlaces">Nombre de places à réserver</param>
+        /// <param name="inSpectId">Identifiant du spectateur qui effectue la réservation</param>
+        /// <returns>Identifiant de la réservation effectuée</returns>
         public int ReserverPlace(int inMatchId, int inNbPlaces, int inSpectId)
         {
             DataTable dataTable = SelectByAdapter("select * from Reservations;");
@@ -708,6 +724,10 @@ namespace DataAccessLayer
             return LastInsertedReservId();
         }
 
+        /// <summary>
+        /// Renvoie l'identifiant de la dernière réservation effectuée dans la base
+        /// </summary>
+        /// <returns>Identifiant de la dernière réservation effectuée dans la base</returns>
         private int LastInsertedReservId()
         {
             List<Reservation> reservations = GetAllReservations();
@@ -717,6 +737,10 @@ namespace DataAccessLayer
             return reservations[totalReserv-1].Id;
         }
 
+        /// <summary>
+        /// Annulation d'une réservation
+        /// </summary>
+        /// <param name="inIdReservation">Identifiant de la réservation à annuler</param>
         public void AnnulerReservation(int inIdReservation)
         {
             DataTable dataTable = SelectByAdapter("select * from Reservations;");
@@ -733,6 +757,11 @@ namespace DataAccessLayer
             UpdateByCommandBuilder("select * from Reservations;", dataTable);
         }
 
+        /// <summary>
+        /// Obtention d'une réservation via son identifiant
+        /// </summary>
+        /// <param name="inIdReservation">Identifiant de la réservation recherchée</param>
+        /// <returns>Réservation correspondante</returns>
         public Reservation GetReservationById(int inIdReservation)
         {
             string request = "select * from Reservations where ID = "+inIdReservation+";";

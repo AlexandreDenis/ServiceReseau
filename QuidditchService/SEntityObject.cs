@@ -6,6 +6,9 @@ using System.Web;
 
 namespace QuidditchService
 {
+    /// <summary>
+    /// Objet EntityObject vu par le web service
+    /// </summary>
     [DataContract]
     abstract public class SEntityObject
     {
@@ -22,9 +25,9 @@ namespace QuidditchService
         }
 
         /// <summary>
-        /// Constructeur de la classe EntityObject
+        /// Constructeur de la classe SEntityObject
         /// </summary>
-        /// <param name="inId">Id de la nouvelle entité</param>
+        /// <param name="inId">Id de l'EntityObject originale</param>
         public SEntityObject(int inId)
         {
             this.Id = inId;

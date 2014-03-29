@@ -18,6 +18,10 @@ namespace SiteWebQuidditch
             
         }
 
+        /// <summary>
+        /// Renvoie la liste des matchs de la base de données
+        /// </summary>
+        /// <returns>Liste des matchs</returns>
         [WebMethod]
         [ScriptMethod]
         public static List<SMatch> GetAllMatchs()
@@ -29,6 +33,11 @@ namespace SiteWebQuidditch
             return service.GetMatchsOfCoupe(coupe);
         }
 
+        /// <summary>
+        /// Créer une session/panier pour les matchs sélectionnés
+        /// par l'utilisateur
+        /// </summary>
+        /// <param name="inListId">Liste des identifiants de matchs sélectionnés</param>
         [WebMethod]
         [ScriptMethod]
         public static void SetReservations(List<int> inListId)

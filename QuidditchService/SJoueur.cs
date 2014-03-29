@@ -8,6 +8,9 @@ using System.Runtime.Serialization;
 
 namespace QuidditchService
 {
+    /// <summary>
+    /// Objet Joueur vu par le web service
+    /// </summary>
     [DataContract]
     public class SJoueur : SPersonne
     {
@@ -42,15 +45,9 @@ namespace QuidditchService
         }
 
         /// <summary>
-        /// Constructeur de la classe Joueur
+        /// Constructeur de la classe SJoueur
         /// </summary>
-        /// <param name="inId">Id du nouveau joueur</param>
-        /// <param name="inNom">Nom du nouveau joueur</param>
-        /// <param name="inPrenom">Prénom du nouveau joueur</param>
-        /// <param name="inDateNaiss">Date de naissance du nouveau joueur</param>
-        /// <param name="inPoste">Poste du nouveau joueur</param>
-        /// <param name="inSelection">Nombre de sélection du nouveau joueur</param>
-        /// <param name="inScore">Score du nouveau joueur</param>
+        /// <param name="inJoueur">Joueur original</param>
         public SJoueur(Joueur inJoueur)
             : base(inJoueur.Id, inJoueur.Nom, inJoueur.Prenom, inJoueur.DateDeNaissance)
         {

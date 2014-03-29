@@ -17,6 +17,10 @@ namespace SiteWebQuidditch
 
         }
 
+        /// <summary>
+        /// Récupération de la session/panier de l'utilisateur
+        /// </summary>
+        /// <returns>Liste des matchs du panier</returns>
         [WebMethod]
         [ScriptMethod]
         public static List<int> GetPanier()
@@ -26,6 +30,11 @@ namespace SiteWebQuidditch
             return listId;
         }
 
+        /// <summary>
+        /// Annulation des réservations cochées par l'utilisateur
+        /// autrement dit suppression du panier
+        /// </summary>
+        /// <param name="inListId">Liste des identifiants des matchs cochés par l'utilisateur</param>
         [WebMethod]
         [ScriptMethod]
         public static void CancelReservations(List<int> inListId)
@@ -43,6 +52,9 @@ namespace SiteWebQuidditch
             HttpContext.Current.Session["ListeMatchsReserves"] = reservations;
         }
 
+        /// <summary>
+        /// Suppression de toutes les réservations de l'utilisateur
+        /// </summary>
         [WebMethod]
         [ScriptMethod]
         public static void ClearPanier()

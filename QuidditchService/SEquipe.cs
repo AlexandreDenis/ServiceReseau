@@ -8,6 +8,9 @@ using System.Runtime.Serialization;
 
 namespace QuidditchService
 {
+    /// <summary>
+    /// Objet Equipe vu par le web service
+    /// </summary>
     [DataContract]
     public class SEquipe : SEntityObject
     {
@@ -32,11 +35,9 @@ namespace QuidditchService
         }
 
         /// <summary>
-        /// Constructeur de la classe Equipe
+        /// Constructeur de la classe SEquipe
         /// </summary>
-        /// <param name="inId">Id de la nouvelle équipe</param>
-        /// <param name="inNom">Nom de la nouvelle équipe</param>
-        /// <param name="inPays">Pays de la nouvelle équipe</param>
+        /// <param name="inEquipe">Equipe originale</param>
         public SEquipe(Equipe inEquipe) : base(inEquipe.Id)
         {
             this.Nom = inEquipe.Nom;

@@ -10,6 +10,9 @@ namespace TestsUnitairesService.cs
     [TestClass]
     public class UnitTest1
     {
+        /// <summary>
+        /// Test unitaire pour la création d'un utilisateur dans la base
+        /// </summary>
         [TestMethod]
         public void TestCreateUser()
         {
@@ -27,6 +30,9 @@ namespace TestsUnitairesService.cs
             Assert.IsTrue(suser2 != null && suser1 == null);
         }
 
+        /// <summary>
+        /// Test unitaire pour l'authentification d'un utilisateur
+        /// </summary>
         [TestMethod]
         public void TestCheckUser()
         {
@@ -38,6 +44,9 @@ namespace TestsUnitairesService.cs
             Assert.IsTrue(service.CheckUser(login,passwd));
         }
 
+        /// <summary>
+        /// Test unitaire pour la récupération des coupes de la base
+        /// </summary>
         [TestMethod]
         public void TestGetCoupes()
         {
@@ -46,6 +55,9 @@ namespace TestsUnitairesService.cs
             Assert.AreNotEqual(scoupes.Count, 0);
         }
 
+        /// <summary>
+        /// Test unitaire pour la récupération des équipes de la base
+        /// </summary>
         [TestMethod]
         public void TestGetEquipes()
         {
@@ -54,6 +66,9 @@ namespace TestsUnitairesService.cs
             Assert.AreNotEqual(sequipes.Count, 0);
         }
 
+        /// <summary>
+        /// Test unitaire pour la récupération des joueurs de la base
+        /// </summary>
         [TestMethod]
         public void TestGetJoueurs()
         {
@@ -65,6 +80,9 @@ namespace TestsUnitairesService.cs
             Assert.AreNotEqual(sjoueurs.Count, 0);
         }
 
+        /// <summary>
+        /// Test unitaire pour la récupération des stades de la base
+        /// </summary>
         [TestMethod]
         public void TestGetStades()
         {
@@ -73,6 +91,9 @@ namespace TestsUnitairesService.cs
             Assert.AreNotEqual(sstades.Count, 0);
         }
 
+        /// <summary>
+        /// Test unitaire pour la récupération des matchs de la base
+        /// </summary>
         [TestMethod]
         public void TestGetMatchs()
         {
@@ -84,6 +105,9 @@ namespace TestsUnitairesService.cs
             Assert.AreNotEqual(smatchs.Count, 0);
         }
 
+        /// <summary>
+        /// Test unitaire pour la réservation de places dans la base
+        /// </summary>
         [TestMethod]
         public void TestReserverPlace()
         {
@@ -99,6 +123,9 @@ namespace TestsUnitairesService.cs
             Assert.IsTrue(nbOld + 1 == nbNew);
         }
 
+        /// <summary>
+        /// Test unitaire pour l'annulation de réservations
+        /// </summary>
         [TestMethod]
         public void TestAnnulerReservation()
         {
@@ -111,6 +138,9 @@ namespace TestsUnitairesService.cs
             Assert.IsTrue(nbOld-1 == nbNew);
         }
 
+        /// <summary>
+        /// Test unitaire pour la récupération des réservations
+        /// </summary>
         [TestMethod]
         public void TestGetReservation()
         {

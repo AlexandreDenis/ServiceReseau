@@ -9,7 +9,9 @@ using EntitiesLayer;
 
 namespace QuidditchService
 {
-    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom d'interface "IServiceQuidditch" à la fois dans le code et le fichier de configuration.
+    /// <summary>
+    /// Interface du web service de notre projet
+    /// </summary>
     [ServiceContract]
     public interface IServiceQuidditch
     {
